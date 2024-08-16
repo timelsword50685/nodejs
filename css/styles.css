@@ -1,0 +1,210 @@
+/* Style the tab */
+.tab {
+    overflow: hidden;
+  }
+  .tablinks{
+    font-weight: bold;
+  }
+        /* 设置初始隐藏样式 */
+        #Personality_query.hidden {
+          display: none;
+      } 
+        /* 设置初始隐藏样式 */
+        #Fleeting_Time_query.hidden {
+          display: none;
+      } 
+      /* 先將只忘記分隱藏 */ 
+      #forgettimebox3{
+        display: none;
+      }
+      /* 先將只忘記分隱藏 */ 
+      .hidden-text{
+        display: none;
+      }
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+  }
+  .Fleeting_Time{
+    width:80%;
+  }
+   #Fleeting_Time_result{
+    display: none;
+  } 
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: none;
+    border: none;
+    border-top: none;
+  }
+
+  .tabcontent {
+    animation: fadeEffect 1s; /* Fading effect takes 1 second */
+  }
+  .inputbox{
+    width: calc(100% - 40px);
+    height: 30px;
+    border: 2px solid #d3d3d3; /* 浅灰色边框 */
+    border-radius: 4px; /* 圆角边框 */
+  }
+  .inputbox-textarea{
+    width: calc(100% - 40px);
+    border: 2px solid #d3d3d3; /* 浅灰色边框 */
+    border-radius: 4px; /* 圆角边框 */      
+  }
+  
+  /* Go from zero to full opacity */
+  @keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  .tabcontent {
+    display: none;
+}
+.title{
+  text-align: left;
+}
+
+/* .container img {
+  width: 100%;
+  height: auto;
+} */
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 水平居中對齊 */
+  text-align: center;  /* 文字居中對齊 */
+  place-items: center; /* 水平和垂直居中 */  
+  max-width: 100%; /* 圖片隨父容器縮放 */
+}
+.container_1{
+  position: relative;
+  display: inline-block; /* 使容器自適應內容 */
+  max-width: 100%; /* 確保容器寬度不超過父容器 */  
+  margin-top: 50px
+}
+.image1 {
+   
+  display: block;
+  width: 100%; /* 圖片寬度填滿父容器 */
+  height: auto; /* 高度自動調整以保持比例 */
+}
+.text {
+  position: absolute;
+  color: black; /* 文字顏色 */
+  padding: 5px; /* 內邊距 */
+  font-size: 1.0em; /* 文字大小 */
+  border-radius: 5px; /* 邊框圓角 */
+}
+.text_Fluent {
+  position: absolute;
+  color: red; /* 文字顏色 */
+  padding: 5px; /* 內邊距 */
+  font-size: 1.0em; /* 文字大小 */
+  border-radius: 5px; /* 邊框圓角 */
+}
+
+.submit-button {
+  background-color: #4CAF50; /* 绿色背景 */
+  border: none; /* 无边框 */
+  color: white; /* 白色文本 */
+  padding: 15px 32px; /* 内边距 */
+  text-align: center; /* 文本居中 */
+  text-decoration: none; /* 无下划线 */
+  display: inline-block; /* 使按钮在一行显示 */
+  font-size: 16px; /* 字体大小 */
+  font-weight: bold;
+  margin-top: 30px; /* 外边距 */
+  cursor: pointer; /* 鼠标指针变为手型 */
+  border-radius: 12px; /* 圆角边框 */
+  transition: background-color 0.3s, transform 0.3s; /* 动画效果 */
+}
+#username_gender{
+  font-size: 24px; /* 字体大小 */ 
+}
+.vertical-text {
+  width: 500px;  /* 設置相同的寬度，確保字串對齊 */
+  margin: 10 0;
+  font-size: 18px; 
+}
+.vertical-text-title{
+  margin: 10 0;
+  font-size: 16px;  
+}
+ 
+/* .vertical-text span {
+  display: block;
+  line-height: 1em; 
+  transform: rotate(0deg); 
+} */
+
+
+.submit-button:hover {
+  background-color: #45a049; /* 悬停时颜色变深 */
+}
+
+.submit-button:active {
+  transform: scale(0.98); /* 按下时按钮缩小 */
+}
+
+.inline-block {
+  display: inline-block;
+  width: 40%; /* 调整宽度以适应父容器 */
+  margin: 10px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0px;
+}
+body {
+  display: flex;
+  flex-direction: column;
+
+}
+main {
+  flex: 1;
+  margin-bottom: 20px; /* Adjust this value to set the desired space */
+}
+footer {
+  height: 80%;
+  background: #f3efef;
+  color: black;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+@media screen and (max-width: 600px) {
+  .inputbox {
+      width: 100%;
+  }
+
+  .tab button {
+      display: block;
+      width: 100%;
+  }
+
+  .submit-button {
+      width: 100%;
+  }
+}
+

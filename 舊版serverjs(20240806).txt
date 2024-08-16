@@ -1,0 +1,19 @@
+const express = require('express');
+const path = require('path');
+const app = express();
+const port = 3000;
+
+// 設置靜態文件目錄
+app.use(express.static(path.join(__dirname)));
+
+// 路由處理
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'html', 'index.html'));
+});
+
+
+
+// 啟動伺服器
+app.listen(port, () => {
+    console.log(`伺服器正在 http://127.0.0.1:${port} 上運行`);
+});
