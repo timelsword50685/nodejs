@@ -39,6 +39,7 @@ function reduceDateTime(symbol_input,date, time, forgetTime) {
     let dayResult = reduceAndLog(monthSum, day);    // 30/3
     let hourResult = forgetTime ? 0 : reduceAndLog(daySum, hour);    // 34/7
     let minuteResult = forgetTime ? 0 : reduceAndLog(hourSum, minute); // 39/12/3
+    let dayResult_Symbol_Number = dayResult.split("/")[1];  //3
     // let targetChar = "/";
     // // 插入固定内容
     // yearResult = yearResult.replace(targetChar, `<span>${targetChar}</span>`);
@@ -50,7 +51,7 @@ function reduceDateTime(symbol_input,date, time, forgetTime) {
     time = time.replace(/:/g, ' . ');
 
     // 返回格式化结果
-    return `\n${symbol_input} ${date} . ${time}\n ${yearResult} 、 ${monthResult} 、 ${dayResult} 、 ${hourResult} 、 ${minuteResult}`;
+    return `\n${symbol_input} ${date} . ${time}\n ${yearResult} 、 ${monthResult} 、 ${dayResult} 、 ${hourResult} 、 ${minuteResult}&&${dayResult_Symbol_Number}`;
 }
 
 module.exports = reduceDateTime;

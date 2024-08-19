@@ -20,7 +20,7 @@ function openCity(evt, cityName) {
   }
       // 默认点击第一个标签
       document.addEventListener("DOMContentLoaded", function() {
-        document.getElementsByClassName("tablinks")[0].click();
+        document.getElementsByClassName("tablinks")[1].click();
     });
 
 
@@ -125,12 +125,15 @@ function openCity(evt, cityName) {
                 contentType: 'application/json',
                 data: JSON.stringify({symbol_input:Symbol, date: dateInput, time: timeInput, forgetTime: forgetTime }),
                 success: function(response) {
-                  const formattedResponse = response.result.replace(/\n/g, "</br>");
+                  let formattedResponse = response.result;
+                  let SymbolNumber = Number(formattedResponse.split("&&")[1]);
+                  formattedResponse = formattedResponse.split("&&")[0];
+                  formattedResponse = formattedResponse.replace(/\n/g, "</br>");
                   //$('#basicResult_title').html('老年數   中年數   青年數   青少年數   幼年數');
                     $('#basicResult').html(formattedResponse);
-                    let lastCharA = Number(formattedResponse.charAt(formattedResponse.length - 1));
+                    // let lastCharA = Number(formattedResponse.charAt(formattedResponse.length - 1));
                     var NumberIndex = 1;
-                    NumberIndex = TriangleNumberInput(lastCharA,NumberIndex); //帶入三角形每邊的值
+                    NumberIndex = TriangleNumberInput(SymbolNumber,NumberIndex); //帶入三角形每邊的值
                     var FluentYear = GetFluentYear(dateInput);                //取得流年數
                     var lastCharFluentYear = FluentYear.charAt(FluentYear.length - 1);
                     $('#'+TargetPosition(lastCharFluentYear)).html(FluentYear);
@@ -144,12 +147,15 @@ function openCity(evt, cityName) {
                       contentType: 'application/json',
                       data: JSON.stringify({symbol_input:Symbol, date: lunarBirthday, time: timeInput, forgetTime: forgetTime }),
                       success: function(response) {
-                        const formattedResponse2 = response.result.replace(/\n/g, "</br>");
+                        let formattedResponse2 = response.result;
+                        let SymbolNumber = Number(formattedResponse2.split("&&")[1]);
+                        formattedResponse2 = formattedResponse2.split("&&")[0];
+                        formattedResponse2 = formattedResponse2.replace(/\n/g, "</br>");
                         //$('#basicResult2_title').html('老年數   中年數   青年數   青少年數   幼年數');
                         $('#basicResult2').html(formattedResponse2); 
-                        let lastCharB = Number(formattedResponse2.charAt(formattedResponse2.length - 1));
+                        // let lastCharB = Number(formattedResponse2.charAt(formattedResponse2.length - 1));
                         // $('#basicResult3').html(`lastCharB:${lastCharB},NumberIndex:${NumberIndex}`);
-                        NumberIndex = TriangleNumberInput(lastCharB,NumberIndex); 
+                        NumberIndex = TriangleNumberInput(SymbolNumber,NumberIndex); 
                         var FluentYear = GetFluentYear(lunarBirthday);                //取得流年數 
                         var lastCharFluentYear = FluentYear.charAt(FluentYear.length - 1);
                         $('#'+TargetPosition_2(lastCharFluentYear)).html(FluentYear);                                              

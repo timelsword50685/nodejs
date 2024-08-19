@@ -2,6 +2,9 @@
 .tab {
     overflow: hidden;
   }
+  #tab1,#tab4{
+    display: none; /* 隱藏這個標籤 */
+  }
   .tablinks{
     font-weight: bold;
   }
@@ -29,6 +32,7 @@
     cursor: pointer;
     padding: 14px 16px;
     transition: 0.3s;
+    width: 200px; /* 設置 tab 的寬度為 200px */
   }
   .Fleeting_Time{
     width:80%;
@@ -202,9 +206,15 @@ footer {
       display: block;
       width: 100%;
   }
+  .tab{
+    width: 80%;
+  }
 
   .submit-button {
       width: 100%;
   }
+  /* #Fleeting_Time{
+    width: 80%;
+  } */
 }
 
