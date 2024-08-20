@@ -130,7 +130,9 @@ function openCity(evt, cityName) {
                   formattedResponse = formattedResponse.split("&&")[0];
                   formattedResponse = formattedResponse.replace(/\n/g, "</br>");
                   //$('#basicResult_title').html('老年數   中年數   青年數   青少年數   幼年數');
+
                     $('#basicResult').html(formattedResponse);
+                    var SoulNumberResult = SoulNumber(formattedResponse);
                     // let lastCharA = Number(formattedResponse.charAt(formattedResponse.length - 1));
                     var NumberIndex = 1;
                     NumberIndex = TriangleNumberInput(SymbolNumber,NumberIndex); //帶入三角形每邊的值
@@ -184,7 +186,14 @@ function openCity(evt, cityName) {
               age--;
           }
           return age;
-      }        
+      }
+        function SoulNumber(formattedResponse){
+          var birthdayParts = formattedResponse.split("</br>")[0]; //+ 1992 . 11 . 16 . 23 . 00</br> 21/3 、 23/5 、 30/3 、 35/8 、 35/8
+          var reduceDateTime = formattedResponse.split("</br>")[1];
+          var formattedbirthdayParts = birthdayParts.replace("+ ", "").replace(/ . /g, "");
+          
+
+        }        
       function TriangleNumberInput(number,NumberIndex) {
         let NumberIndexEnd = NumberIndex + 8;
         for (NumberIndex ; NumberIndex <= NumberIndexEnd; NumberIndex++) {

@@ -51,7 +51,7 @@ function reduceDateTime(symbol_input,date, time, forgetTime) {
     time = time.replace(/:/g, ' . ');
 
     // 返回格式化结果
-    return `\n${symbol_input} ${date} . ${time}\n ${yearResult} 、 ${monthResult} 、 ${dayResult} 、 ${hourResult} 、 ${minuteResult}&&${dayResult_Symbol_Number}`;
+    return `${symbol_input} ${date} . ${time}\n ${yearResult} 、 ${monthResult} 、 ${dayResult} 、 ${hourResult} 、 ${minuteResult}&&${dayResult_Symbol_Number}`;
 }
 
 module.exports = reduceDateTime;
