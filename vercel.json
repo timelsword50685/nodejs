@@ -11,10 +11,12 @@
     {
       "source": "/js/(.*)",
       "destination": "/js/$1"
-    },
+    }
+  ],
+  "routes": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
+      "src": "/api/(.*)",
+      "dest": "/server.js"
     }
   ]
 }
