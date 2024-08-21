@@ -132,7 +132,10 @@ function openCity(evt, cityName) {
                   //$('#basicResult_title').html('老年數   中年數   青年數   青少年數   幼年數');
 
                     $('#basicResult').html(formattedResponse);
-                    var SoulNumberResult = SoulNumber(formattedResponse);
+                    let Result_arr = [];
+                    Result_arr  = SoulNumber(formattedResponse);
+                    let result = Result_arr.join(","); // 使用 "-" 作为分隔符
+                    $('#basicResult_SoulNumber').html(result);
                     // let lastCharA = Number(formattedResponse.charAt(formattedResponse.length - 1));
                     var NumberIndex = 1;
                     NumberIndex = TriangleNumberInput(SymbolNumber,NumberIndex); //帶入三角形每邊的值
@@ -188,11 +191,114 @@ function openCity(evt, cityName) {
           return age;
       }
         function SoulNumber(formattedResponse){
-          var birthdayParts = formattedResponse.split("</br>")[0]; //+ 1992 . 11 . 16 . 23 . 00</br> 21/3 、 23/5 、 30/3 、 35/8 、 35/8
-          var reduceDateTime = formattedResponse.split("</br>")[1];
-          var formattedbirthdayParts = birthdayParts.replace("+ ", "").replace(/ . /g, "");
-          
+          alert(formattedResponse);
+          var birthdayParts = formattedResponse.split("</br>")[0]; //+ 1992 . 11 . 16 . 23 . 00
+          var reduceDateTime = formattedResponse.split("</br>")[1];//21/3 、 23/5 、 30/3 、 35/8 、 35/8
+          var reduceDateTimeSplitSplit = "";
+          var reduceDateTimeSplit = "";
+          var reduceDateTimeSplitFirst = "";
+          var reduceDateTimeSplitFirst_1 = "";
+          var reduceDateTimeSplitFirst_2 = "";
+          var reduceDateTimeSplitSecond = "";
+          var formattedbirthdayParts = birthdayParts.replace("+ ", "").replace(/ . /g, "");//199211162300
+          formattedbirthdayParts = formattedbirthdayParts.replace(/\s+/g, '');
+          var result;
+          var result_six = false;
+          var Result_arr = [];
+          // formattedbirthdayParts = formattedbirthdayParts.split("");//1,9,9,2,1,1,1,6,2,3,0,0
+          reduceDateTimeSplitSplit = reduceDateTime.replace("/", "").replace(/ 、 /g, "");  //213235303358358
+          reduceDateTimeSplitSplit = reduceDateTimeSplitSplit.replace(/\s+/g, '');
+          alert(reduceDateTimeSplitSplit);
+          // 创建一个对象来存储 str2 中每个数字的出现次数
+          let countMap = {};
 
+          // 遍历 str2，统计每个数字的出现次数
+          for (let char of formattedbirthdayParts) {
+            if (countMap[char]) {
+              countMap[char]++;
+            } else {
+              countMap[char] = 1;
+            }
+          }
+
+          // 遍历 str1，检查每个数字在 str2 中是否出现了至少 3 次
+          let loop_result = [];
+          for (let char of reduceDateTimeSplitSplit) {
+            if (countMap[char] >= 3 && !loop_result.includes(char)) {
+              loop_result.push(char);
+              alert("loop_result:",char);
+            }
+          }
+          alert("数字在 str2 中出现次数 >= 3 的有: ", loop_result.join(""));
+
+          reduceDateTime = reduceDateTime.split(" 、 ");
+          for (let i = 0; i < reduceDateTime.length; i++) {
+            reduceDateTimeSplit = reduceDateTime[i];  //99/18/9
+            let Count_Slash = reduceDateTimeSplit.split('/').length - 1;  //假如 99/18/9 則/出現兩次
+            reduceDateTimeSplitFirst = reduceDateTimeSplit.split("/")[0]; //99
+            if(i === 0){        //第一個數會為正負號需跳過
+              reduceDateTimeSplitFirst_1 = reduceDateTimeSplitFirst.split('')[1];//第一個9
+              reduceDateTimeSplitFirst_2 = reduceDateTimeSplitFirst.split('')[2];//第二個9
+            }else{
+              reduceDateTimeSplitFirst_1 = reduceDateTimeSplitFirst.split('')[0];//第一個9
+              reduceDateTimeSplitFirst_2 = reduceDateTimeSplitFirst.split('')[1];//第二個9
+            }
+            // alert(reduceDateTimeSplitFirst);
+            
+            // alert(reduceDateTimeSplitFirst_1);
+            
+            // alert(reduceDateTimeSplitFirst_2);
+            let parts = formattedbirthdayParts.split(reduceDateTimeSplitFirst_1);
+            
+            let First_Count_Circle = parts.length - 1; //9在199211162300出現的次數
+            //alert(First_Count_Circle);
+                parts = formattedbirthdayParts.split(reduceDateTimeSplitFirst_2);
+            
+            let Second_Count_Circle = parts.length - 1; //9在199211162300出現的次數
+            // alert(Second_Count_Circle);
+            
+            if(Count_Slash > 1){
+              reduceDateTimeSplitSecond = reduceDateTimeSplit.split("/")[2]; //9
+            }else{              
+              reduceDateTimeSplitSecond = reduceDateTimeSplit.split("/")[1]; //個位數的話，則取得最後一個數字
+            }
+            parts = formattedbirthdayParts.split(reduceDateTimeSplitSecond);
+            
+            let Third_Count_Circle = parts.length - 1; //9在199211162300出現的次數
+            //alert(Third_Count_Circle);
+            let First_Result  = false; // 布尔值 false
+            let Second_Result = false; // 布尔值 false
+            let Third_Result  = false; // 布尔值 false
+            if(First_Count_Circle > 0){First_Result = true};
+            if(Second_Count_Circle > 0){Second_Result = true};
+            if(Third_Count_Circle > 0){Third_Result = true};
+            alert(`${First_Result},${Second_Result},${Third_Result}`);
+            if((!First_Result && !Second_Result) && !Third_Result){
+              result = 1  //1
+            }else
+            if(((First_Result && !Second_Result) || (!First_Result && Second_Result)) && !Third_Result){
+              result = 2  //2
+            }else
+            if((First_Result && Second_Result) && !Third_Result){
+              result = 3  //3
+            }else
+            if((!First_Result && !Second_Result) && Third_Result){
+              result = 4  //4
+            }else
+            if(((First_Result && !Second_Result) || (!First_Result && Second_Result)) && Third_Result){
+              result = 5  //5
+            }else
+            if((First_Result && Second_Result) && Third_Result){
+              if((First_Count_Circle >= 3 && reduceDateTimeSplitFirst_1 != 0) || (Second_Count_Circle >= 3 && reduceDateTimeSplitFirst_2 != 0) || (Third_Count_Circle >= 3 && reduceDateTimeSplitSecond != 0)){
+                result = 6 //6
+              }else{
+                result = 7 //7
+              }             
+            }
+            alert(result);
+            Result_arr[i] = result;
+          }
+          return Result_arr;
         }        
       function TriangleNumberInput(number,NumberIndex) {
         let NumberIndexEnd = NumberIndex + 8;
