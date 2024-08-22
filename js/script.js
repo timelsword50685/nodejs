@@ -134,8 +134,12 @@ function openCity(evt, cityName) {
                     $('#basicResult').html(formattedResponse);
                     let Result_arr = [];
                     Result_arr  = SoulNumber(formattedResponse);
-                    let result = Result_arr.join(","); // 使用 "-" 作为分隔符
-                    $('#basicResult_SoulNumber').html(result);
+                    // let result = Result_arr.join("、"); // 使用 "、" 作为分隔符
+                    // 遍历数组，将每个值放入一个 span 中
+                    // alert(Result_arr);
+                    SoulNumberSpan(Result_arr);
+
+                    // $('#basicResult_SoulNumber').html(result);
                     // let lastCharA = Number(formattedResponse.charAt(formattedResponse.length - 1));
                     var NumberIndex = 1;
                     NumberIndex = TriangleNumberInput(SymbolNumber,NumberIndex); //帶入三角形每邊的值
@@ -191,7 +195,7 @@ function openCity(evt, cityName) {
           return age;
       }
         function SoulNumber(formattedResponse){
-          alert(formattedResponse);
+          // alert(formattedResponse);
           var birthdayParts = formattedResponse.split("</br>")[0]; //+ 1992 . 11 . 16 . 23 . 00
           var reduceDateTime = formattedResponse.split("</br>")[1];//21/3 、 23/5 、 30/3 、 35/8 、 35/8
           var reduceDateTimeSplitSplit = "";
@@ -200,15 +204,16 @@ function openCity(evt, cityName) {
           var reduceDateTimeSplitFirst_1 = "";
           var reduceDateTimeSplitFirst_2 = "";
           var reduceDateTimeSplitSecond = "";
-          var formattedbirthdayParts = birthdayParts.replace("+ ", "").replace(/ . /g, "");//199211162300
+          var formattedbirthdayParts = birthdayParts.replace("+ ", "").replace(/ . /g, "");//199211162300  把0去除
           formattedbirthdayParts = formattedbirthdayParts.replace(/\s+/g, '');
           var result;
           var result_six = false;
           var Result_arr = [];
           // formattedbirthdayParts = formattedbirthdayParts.split("");//1,9,9,2,1,1,1,6,2,3,0,0
-          reduceDateTimeSplitSplit = reduceDateTime.replace("/", "").replace(/ 、 /g, "");  //213235303358358
+          reduceDateTimeSplitSplit = reduceDateTime.replace(/\//g, "").replace(/ 、 /g, "");  //213235303358358 把0去除
           reduceDateTimeSplitSplit = reduceDateTimeSplitSplit.replace(/\s+/g, '');
-          alert(reduceDateTimeSplitSplit);
+          // alert(reduceDateTimeSplitSplit);
+          // alert(formattedbirthdayParts);
           // 创建一个对象来存储 str2 中每个数字的出现次数
           let countMap = {};
 
@@ -220,17 +225,26 @@ function openCity(evt, cityName) {
               countMap[char] = 1;
             }
           }
+          // // 將 countMap 的內容轉換為字符串格式
+          // let result_map = "";
+          // for (let char in countMap) {
+          //   result_map += `字符 ${char} 出现了 ${countMap[char]} 次\n`;
+          // }
+
+          // // 使用 alert 來顯示結果
+          // alert(result_map);
+
+
+
 
           // 遍历 str1，检查每个数字在 str2 中是否出现了至少 3 次
           let loop_result = [];
           for (let char of reduceDateTimeSplitSplit) {
             if (countMap[char] >= 3 && !loop_result.includes(char)) {
               loop_result.push(char);
-              alert("loop_result:",char);
             }
           }
-          alert("数字在 str2 中出现次数 >= 3 的有: ", loop_result.join(""));
-
+          // alert(loop_result);
           reduceDateTime = reduceDateTime.split(" 、 ");
           for (let i = 0; i < reduceDateTime.length; i++) {
             reduceDateTimeSplit = reduceDateTime[i];  //99/18/9
@@ -243,11 +257,9 @@ function openCity(evt, cityName) {
               reduceDateTimeSplitFirst_1 = reduceDateTimeSplitFirst.split('')[0];//第一個9
               reduceDateTimeSplitFirst_2 = reduceDateTimeSplitFirst.split('')[1];//第二個9
             }
-            // alert(reduceDateTimeSplitFirst);
-            
-            // alert(reduceDateTimeSplitFirst_1);
-            
-            // alert(reduceDateTimeSplitFirst_2);
+            //  alert(reduceDateTimeSplitFirst);            
+            //  alert(reduceDateTimeSplitFirst_1);            
+            //  alert(reduceDateTimeSplitFirst_2);
             let parts = formattedbirthdayParts.split(reduceDateTimeSplitFirst_1);
             
             let First_Count_Circle = parts.length - 1; //9在199211162300出現的次數
@@ -255,7 +267,7 @@ function openCity(evt, cityName) {
                 parts = formattedbirthdayParts.split(reduceDateTimeSplitFirst_2);
             
             let Second_Count_Circle = parts.length - 1; //9在199211162300出現的次數
-            // alert(Second_Count_Circle);
+            //  alert(Second_Count_Circle);
             
             if(Count_Slash > 1){
               reduceDateTimeSplitSecond = reduceDateTimeSplit.split("/")[2]; //9
@@ -272,7 +284,7 @@ function openCity(evt, cityName) {
             if(First_Count_Circle > 0){First_Result = true};
             if(Second_Count_Circle > 0){Second_Result = true};
             if(Third_Count_Circle > 0){Third_Result = true};
-            alert(`${First_Result},${Second_Result},${Third_Result}`);
+            //  alert(`${First_Result},${Second_Result},${Third_Result}`);
             if((!First_Result && !Second_Result) && !Third_Result){
               result = 1  //1
             }else
@@ -292,14 +304,27 @@ function openCity(evt, cityName) {
               if((First_Count_Circle >= 3 && reduceDateTimeSplitFirst_1 != 0) || (Second_Count_Circle >= 3 && reduceDateTimeSplitFirst_2 != 0) || (Third_Count_Circle >= 3 && reduceDateTimeSplitSecond != 0)){
                 result = 6 //6
               }else{
-                result = 7 //7
+                if(loop_result.length != 0 && !loop_result.includes(0)){  //陣列長度不為0且不包含0的數
+                  result = 6 //6 
+                }else{
+                  result = 7 //7
+                }
+                
               }             
             }
-            alert(result);
+            // alert(result);
             Result_arr[i] = result;
           }
           return Result_arr;
-        }        
+        }  
+      function SoulNumberSpan(Result_arr){
+        $.each(Result_arr, function(index, value) {
+          // 创建一个新的 span 元素，并设置内容
+          const span = $('<span></span>').text(value).addClass('circle');
+          // 将 span 元素添加到容器中
+          $('#basicResult_SoulNumber').append(span);
+      });
+      }        
       function TriangleNumberInput(number,NumberIndex) {
         let NumberIndexEnd = NumberIndex + 8;
         for (NumberIndex ; NumberIndex <= NumberIndexEnd; NumberIndex++) {

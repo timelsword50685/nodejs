@@ -218,4 +218,33 @@ footer {
     width: 80%;
   } */
 }
+#basicResult_SoulNumber {
+  display: flex;
+  justify-content: space-around; /* 均分对齐 */
+  align-items: center; /* 垂直居中 */
+  width : 80%;
+  height: 100px; /* 容器高度 */
+  /* border: 1px solid #ccc; */
+}
+#basicResult{
+  width : 80%;
+}
+td .small {
+  width: 80%; /* 设置宽度为80% */
+  white-space: nowrap; /* 防止内容换行 */
+  overflow: hidden; /* 隐藏溢出内容 */
+  text-overflow: ellipsis; /* 用省略号表示溢出内容 */
+}
+.circle {
+  display: flex; 
+  justify-content: center; 
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  text-align: center;
+  line-height: 24px;
+  font-weight: bold;
+  border: 1px solid #000;
 
+}
