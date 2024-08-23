@@ -35,7 +35,7 @@
     width: 200px; /* 設置 tab 的寬度為 200px */
   }
   .Fleeting_Time{
-    width:80%;
+    width:60%;
   }
    #Fleeting_Time_result{
     display: none;
@@ -229,11 +229,14 @@ footer {
 #basicResult{
   width : 80%;
 }
-td .small {
-  width: 80%; /* 设置宽度为80% */
-  white-space: nowrap; /* 防止内容换行 */
-  overflow: hidden; /* 隐藏溢出内容 */
-  text-overflow: ellipsis; /* 用省略号表示溢出内容 */
+.small {
+  padding-left: 250px;
+}
+.small-2{
+  padding-right: 100px;
+}
+#tableid {
+  border-collapse: collapse; /* 消除表格间的空白 */  
 }
 .circle {
   display: flex; 
