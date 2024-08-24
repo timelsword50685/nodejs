@@ -40,6 +40,9 @@
    #Fleeting_Time_result{
     display: none;
   } 
+  #Destiny_result{
+    display: none;
+  } 
   
   /* Change background color of buttons on hover */
   .tab button:hover {
@@ -145,21 +148,7 @@
 #username_gender{
   font-size: 24px; /* 字体大小 */ 
 }
-.vertical-text {
-  width: 500px;  /* 設置相同的寬度，確保字串對齊 */
-  margin: 10 0;
-  font-size: 18px; 
-}
-.vertical-text-title{
-  margin: 10 0;
-  font-size: 16px;  
-}
- 
-/* .vertical-text span {
-  display: block;
-  line-height: 1em; 
-  transform: rotate(0deg); 
-} */
+
 
 
 .submit-button:hover {
@@ -218,29 +207,50 @@ footer {
     width: 80%;
   } */
 }
-#basicResult_SoulNumber {
+
+
+[name="basicResult_SoulNumber"] {
   display: flex;
   justify-content: space-around; /* 均分对齐 */
   align-items: center; /* 垂直居中 */
-  width : 80%;
+  width : 60%;
   height: 100px; /* 容器高度 */
+  padding-left: 200px;
   /* border: 1px solid #ccc; */
 }
-#basicResult{
-  width : 80%;
+[name="basicResult"] {
+  width : 60%;
+  padding-left: 200px;
 }
-.small {
-  padding-left: 250px;
+.vertical-text {
+  width: 300px;  /* 設置相同的寬度，確保字串對齊 */
+  /* margin: 10 0; */
+  font-size: 18px; 
 }
+.vertical-text-title{
+  margin: 10 0;
+  font-size: 16px;  
+}
+ 
+/* .vertical-text span {
+  display: block;
+  line-height: 1em; 
+  transform: rotate(0deg); 
+} */
+/* .small {
+  padding-left: 200px;
+} */
 .small-2{
   padding-right: 100px;
 }
 #tableid {
   border-collapse: collapse; /* 消除表格间的空白 */  
+  width : 80%;
 }
 .circle {
-  display: flex; 
-  justify-content: center; 
+
+  display: flex;
+  justify-content: center;
   width: 24px;
   height: 24px;
   border-radius: 50%;

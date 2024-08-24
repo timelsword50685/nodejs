@@ -122,8 +122,8 @@
     <table id="tableid">
         <tr> 
           <td class="small">
-              <div id="basicResult" class="vertical-text"></div>
-              <div id="basicResult_SoulNumber" class="vertical-text"></div>              
+              <div id="basicResult" class="vertical-text" name="basicResult"></div>
+              <div id="basicResult_SoulNumber" class="vertical-text" name="basicResult_SoulNumber"></div>              
             <!-- <div id="basicResult_title" class="vertical-text-title"></div>      -->
           </td>
           <td class="small-2">
@@ -152,8 +152,8 @@
         </tr>
         <tr>
           <td class="small">
-            <div id="basicResult2" class="vertical-text"></div> 
-            <div id="basicResult4" class="vertical-text"></div>              
+            <div id="basicResult_Lunar" class="vertical-text" name="basicResult"></div> 
+            <div id="basicResult_SoulNumber_Lunar" class="vertical-text" name="basicResult_SoulNumber"></div>              
             <!-- <div id="basicResult2_title" class="vertical-text-title"></div>      -->            
           </td>
           <td class="small-2">
@@ -186,39 +186,37 @@
 
 </div>
 
-<div id="Destiny" class="tabcontent">
-  <h1 class="title"><center>輸入你的生日</center></h1>
-  <div>
-    <p>年、月、日 (單月、日要多加一個0，例:1983-01-03)</p>
-    <input type="text" id="date-input03" class="inputbox" name="date" placeholder="2000-01-01">
-  </div>
-  <div>
-    <p>時、分</p>
-    <input type="text" id="time-input03" class="inputbox" name="time" placeholder="00:00">
-  </div>
-
-  <div>
-    <label for="forgettime">
-      <center>
-        <input type="checkbox" id="forgettimebox4" name="forget" value="forget1">
-        只忘記分
-        <input type="checkbox" id="forgettimebox5" name="forget" value="forget1">
-        忘記時、分
-      </center>
-  </label>  
-  </div>
-  <div>
-    <p>姓名</p>
-    <input type="text" id="username-input02" class="inputbox" name="inputuserinformation" placeholder="請輸入姓名">
-  </div>
-  <div>
-    <p>性別</p>
-    <input type="text" id="usergender-input02" class="inputbox" name="inputuserinformation" placeholder="請輸入姓別">
-  </div>
-
-
-
-  <h1 class="title"><center>輸入對方的生日</center></h1>
+<div id="Destiny" class="tabcontent"> 
+  <div id="Destiny_Query">
+    <h1 class="title"><center>輸入你的生日</center></h1>
+    <div>
+      <p>年、月、日 (單月、日要多加一個0，例:1983-01-03)</p>
+      <input type="text" id="date-input03" class="inputbox" name="date" placeholder="2000-01-01">
+    </div>
+    <div>
+      <p>時、分</p>
+      <input type="text" id="time-input03" class="inputbox" name="time" placeholder="00:00">
+    </div>
+  
+    <div>
+      <label for="forgettime">
+        <center>
+          <input type="checkbox" id="forgettimebox4" name="forget" value="forget1">
+          只忘記分
+          <input type="checkbox" id="forgettimebox5" name="forget" value="forget1">
+          忘記時、分
+        </center>
+    </label>  
+    </div>
+    <div>
+      <p>姓名</p>
+      <input type="text" id="username-input02" class="inputbox" name="inputuserinformation" placeholder="請輸入姓名">
+    </div>
+    <div>
+      <p>性別</p>
+      <input type="text" id="usergender-input02" class="inputbox" name="inputuserinformation" placeholder="請輸入姓別">
+    </div>
+    <h1 class="title"><center>輸入對方的生日</center></h1>
   <div>
     <p>年、月、日 (單月、日要多加一個0，例:1983-01-03)</p>
     <input type="text" id="date-input04" class="inputbox" name="date" placeholder="2000-01-01">
@@ -254,9 +252,13 @@
   <div>
     <center>
       <form action="/submit" method="post">
-        <input type="submit" value="提交" class="submit-button">
+        <input type="submit" id="queryButton_Destiny" value="提交" class="submit-button">
       </form>
     </center>
+  </div>  
+  </div>
+  <div id="Destiny_result">
+
   </div>
 </div>
 

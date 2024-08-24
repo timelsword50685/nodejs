@@ -133,11 +133,12 @@ function openCity(evt, cityName) {
 
                     $('#basicResult').html(formattedResponse);
                     let Result_arr = [];
+                    var basicResult = "#basicResult_SoulNumber";
                     Result_arr  = SoulNumber(formattedResponse);
                     // let result = Result_arr.join("、"); // 使用 "、" 作为分隔符
                     // 遍历数组，将每个值放入一个 span 中
                     // alert(Result_arr);
-                    SoulNumberSpan(Result_arr);
+                    SoulNumberSpan(Result_arr,basicResult);
 
                     // $('#basicResult_SoulNumber').html(result);
                     // let lastCharA = Number(formattedResponse.charAt(formattedResponse.length - 1));
@@ -161,7 +162,14 @@ function openCity(evt, cityName) {
                         formattedResponse2 = formattedResponse2.split("&&")[0];
                         formattedResponse2 = formattedResponse2.replace(/\n/g, "</br>");
                         //$('#basicResult2_title').html('老年數   中年數   青年數   青少年數   幼年數');
-                        $('#basicResult2').html(formattedResponse2); 
+                        $('#basicResult_Lunar').html(formattedResponse2); 
+                        let Result_arr02 = [];
+                        basicResult = "#basicResult_SoulNumber_Lunar";
+                        Result_arr02  = SoulNumber(formattedResponse2,basicResult);
+                        // let result = Result_arr.join("、"); // 使用 "、" 作为分隔符
+                        // 遍历数组，将每个值放入一个 span 中
+                        // alert(Result_arr);
+                        SoulNumberSpan(Result_arr02,basicResult);                        
                         // let lastCharB = Number(formattedResponse2.charAt(formattedResponse2.length - 1));
                         // $('#basicResult3').html(`lastCharB:${lastCharB},NumberIndex:${NumberIndex}`);
                         NumberIndex = TriangleNumberInput(SymbolNumber,NumberIndex); 
@@ -171,7 +179,7 @@ function openCity(evt, cityName) {
                       },
                       error: function(error) {
                           console.error('Error:', error);
-                          $('#basicResult2').html('<p>發生錯誤，請稍後再試。</p>');
+                          $('#basicResult_Lunar').html('<p>發生錯誤，請稍後再試。</p>');
                       }
                   });                    
                 },
@@ -183,7 +191,10 @@ function openCity(evt, cityName) {
             const age = calculateAge(dateInput);
             $('#username_gender').html(`${usernameinput}  ${age}歲  ${usergenderinput}`);
             $('#Fleeting_Time_query').addClass('hidden');            
-        });  
+        });
+        $('#queryButton_Destiny').on('click', function() {
+          $("#Fleeting_Time_result").toggle(); // 切換div的顯示與隱藏
+        }); 
         function calculateAge(birthdate) {
           const today = new Date();
           const birthDate = new Date(birthdate);
@@ -317,12 +328,12 @@ function openCity(evt, cityName) {
           }
           return Result_arr;
         }  
-      function SoulNumberSpan(Result_arr){
+      function SoulNumberSpan(Result_arr,basicResult){
         $.each(Result_arr, function(index, value) {
           // 创建一个新的 span 元素，并设置内容
           const span = $('<span></span>').text(value).addClass('circle');
           // 将 span 元素添加到容器中
-          $('#basicResult_SoulNumber').append(span);
+          $(basicResult).append(span);
       });
       }        
       function TriangleNumberInput(number,NumberIndex) {
