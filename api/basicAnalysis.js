@@ -60,4 +60,4 @@ function reduceDateTime(symbol_input,date, time,forgetTime_minute, forgetTime) {
     
 }
 
-module.exports = reduceDateTime;
+ module.exports = reduceDateTime;
