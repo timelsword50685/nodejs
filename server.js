@@ -28,8 +28,8 @@ app.use('/api/fiveStages.js', fiveStages);
 app.use('/api/consultation.js', consultation);
 app.post('/api/basicAnalysis.js', (req, res) => {
     try {
-        const {symbol_input, date, time, forgetTime } = req.body;
-        const result = generatePersonalityAnalysis(symbol_input,date, time, forgetTime);
+        const {symbol_input, date, time,forgetTime_minute, forgetTime } = req.body;
+        const result = generatePersonalityAnalysis(symbol_input,date, time,forgetTime_minute, forgetTime);
         res.json({ result });
     } catch (error) {
         console.error('Error processing request:', error);

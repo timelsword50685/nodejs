@@ -16,14 +16,19 @@
         #Fleeting_Time_query.hidden {
           display: none;
       } 
+        /* 设置初始隐藏样式 */
+        #Destiny_Query.hidden {
+          display: none;
+      } 
+      
       /* 先將只忘記分隱藏 */ 
-      #forgettimebox3{
+      /* #forgettimebox3{
         display: none;
-      }
+      } */
       /* 先將只忘記分隱藏 */ 
-      .hidden-text{
+      /* .hidden-text{
         display: none;
-      }
+      } */
   /* Style the buttons that are used to open the tab content */
   .tab button {
     float: left;
@@ -42,7 +47,21 @@
   } 
   #Destiny_result{
     display: none;
-  } 
+  }
+  .box_container{   
+    display: flex;
+    justify-content: space-around; /* 或者使用 space-between, flex-start, flex-end, 等 */
+    align-items: center; /* 讓內部元素垂直置中 */   
+  }
+
+  .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: lightblue; */
+    border-bottom: 2px solid rgb(81, 79, 68); /* 在右側添加一條線 */
+    padding: 20px;
+}
   
   /* Change background color of buttons on hover */
   .tab button:hover {
@@ -122,6 +141,23 @@
   font-size: 1.0em; /* 文字大小 */
   border-radius: 5px; /* 邊框圓角 */
 }
+.text_2 {
+  position: absolute;
+  color: black; /* 文字顏色 */
+  padding: 5px; /* 內邊距 */
+  font-size: 0.5em; /* 文字大小 */
+  border-radius: 5px; /* 邊框圓角 */
+}
+[name="bg_color_blue"] {
+  background-color: #9cedf4; /* 藍色背景 */
+}
+[name="bg_color_green"] {
+  background-color: #bef6a2; /* 綠色背景 */
+}
+[name="bg_color_red"] {
+  background-color: #f6aabc; /* 粉色背景 */
+  color: rgb(239, 16, 16); /* 文字顏色 */
+}
 .text_Fluent {
   position: absolute;
   color: red; /* 文字顏色 */
@@ -145,7 +181,7 @@
   border-radius: 12px; /* 圆角边框 */
   transition: background-color 0.3s, transform 0.3s; /* 动画效果 */
 }
-#username_gender{
+.username_gender_style{
   font-size: 24px; /* 字体大小 */ 
 }
 
@@ -222,6 +258,21 @@ footer {
   width : 60%;
   padding-left: 200px;
 }
+[name="basicResult_2"] {
+  width : 60%;
+}
+[name="basicResult_SoulNumber_2"] {
+  display: flex;
+  justify-content: space-around; /* 均分对齐 */
+  align-items: center; /* 垂直居中 */
+  width : 60%;
+  height: 100px; /* 容器高度 */
+  /* border: 1px solid #ccc; */
+}
+[name="container_1_margin"] {
+  margin-left : 110px;
+}
+
 .vertical-text {
   width: 300px;  /* 設置相同的寬度，確保字串對齊 */
   /* margin: 10 0; */
@@ -237,16 +288,14 @@ footer {
   line-height: 1em; 
   transform: rotate(0deg); 
 } */
-/* .small {
-  padding-left: 200px;
-} */
 .small-2{
   padding-right: 100px;
 }
-#tableid {
+.tableid {
   border-collapse: collapse; /* 消除表格间的空白 */  
   width : 80%;
 }
+
 .circle {
 
   display: flex;
