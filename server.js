@@ -16,6 +16,16 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'html', 'index.html'));
 });
 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'js', 'script.js'));
+});
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'css', 'style.css'));
+});
+
+
+
 
 // 引入 API 模块
 const generatePersonalityAnalysis = require('./api/basicAnalysis.js');
