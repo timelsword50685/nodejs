@@ -16,11 +16,11 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'html', 'index.html'));
 });
 
-// app.use('/css', express.static(path.join(__dirname, 'css')));
+app.use('/css', express.static(path.join(__dirname, 'css')));
 
-// app.use('/js', express.static(path.join(__dirname, 'js')));
+app.use('/js', express.static(path.join(__dirname, 'js')));
 
-// app.use('/pictures', express.static(path.join(__dirname, 'pictures')));
+app.use('/pictures', express.static(path.join(__dirname, 'pictures')));
 
 
 
