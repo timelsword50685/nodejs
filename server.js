@@ -16,13 +16,9 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'html', 'index.html'));
 });
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'js', 'script.js'));
-});
+app.use('/css', express.static(path.join(__dirname, 'css')));
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'css', 'style.css'));
-});
+app.use('/js', express.static(path.join(__dirname, 'js')));
 
 
 
