@@ -215,14 +215,14 @@ main {
   margin-bottom: 20px; /* Adjust this value to set the desired space */
 }
 footer {
-  height: 80%;
+  height: 20%;
   background: #f3efef;
   color: black;
   text-align: center;
   margin-top: 5rem;
 }
 
-@media screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
   .inputbox {
       width: 100%;
   }
@@ -239,9 +239,17 @@ footer {
   .submit-button {
       width: 100%;
   }
+  #nine_stage_number{
+    display: block;
+    width: 100%;    
+  }
   /* #Fleeting_Time{
     width: 80%;
   } */
+   #Destiny_result{
+    display: block;
+    width: 60%; 
+   }
 }
 
 
@@ -270,7 +278,11 @@ footer {
   /* border: 1px solid #ccc; */
 }
 [name="container_1_margin"] {
+  margin-left :  110px;
+}
+[name="container_2_margin"] {
   margin-left : 110px;
+  margin-top : 100px;
 }
 
 .vertical-text {
@@ -310,3 +322,10 @@ footer {
   border: 1px solid #000;
 
 }
+
+#generated-image {
+  margin-top: 20px;
+  width: 100%;
+  display: none;
+}
+

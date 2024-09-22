@@ -2,7 +2,9 @@
 <html>
     <head>
       <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+      <meta name="viewport" content="width=device-width, initial-scale=0.5, user-scalable=yes">
+      <!-- <meta name="viewport" content="width=1440, initial-scale=0.3"> -->
       <link rel="stylesheet" href="/css/styles.css">
   
       <!-- jQuery JS -->
@@ -17,6 +19,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/lunar-javascript/1.6.12/lunar.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
       <script src="/js/script.js"></script>
      
     </head>
@@ -446,7 +449,7 @@
             </div>
           </td>   
           <td>
-            <div class="container_1" name="container_1_margin"> <!--中年-->
+            <div class="container_1" name="container_1_margin"> <!--青年-->
               <img src="pictures/white.png" alt="描述圖片的文字" class="image2">
               <div id="Symbol_5" class="text" style="top: 0%; left: -90%;">+</div>
               <div id="Symbol_6" class="text" style="top: 80%; left: -90%;">-</div>
@@ -468,55 +471,57 @@
               <div id="stage_number_54" class="text" style="top: 40%; left:  -75%;"></div>
               <div id="stage_number_55" class="text" style="top: 40%; left:  0%;"></div>
             </div>
-          </td>   
+          </td>                                                       
+        </tr>
+        <tr>
           <td>
-            <div class="container_1" name="container_1_margin"> <!--中年-->
+            <div class="container_1" name="container_2_margin"> <!--幼年-->
               <img src="pictures/white.png" alt="描述圖片的文字" class="image2">
-              <div id="Symbol_7" class="text" style="top: 0%; left: -90%;">+</div>
-              <div id="Symbol_8" class="text" style="top: 80%; left: -90%;">-</div>
-              <div id="stage_number_56" name="bg_color_blue" class="text" style="top: 0%; left: -80%;"></div>
-              <div id="stage_number_57" name="bg_color_blue" class="text" style="top: 0%; left:  -10%;"></div>
-              <div id="stage_number_58" name="bg_color_blue" class="text" style="top: 80%; left:  -10%;"></div>
-              <div id="stage_number_59" name="bg_color_blue" class="text" style="top: 80%; left:  -80%;"></div>
-              <!-- <div id="stage_number_60" class="text" style="top: 40%; left:  -60%;"></div>
-              <div id="stage_number_61" class="text" style="top: 40%; left:  0%;"></div> -->
-              <div id="stage_number_62" name="bg_color_green" class="text" style="top: 40%; left:  -45%;"></div>
-              <div id="stage_number_63" name="bg_color_red" class="text" style="top: -20%; left:  -35%;"></div>
-              <div id="stage_number_64" name="bg_color_red" class="text" style="top: 100%; left:  -35%;"></div>
-              <div id="stage_number_65" name="bg_color_red" class="text" style="top: 40%; left:  -100%;"></div>
-              <div id="stage_number_66" name="bg_color_red" class="text" style="top: 40%; left:  25%;"></div>
-              <div id="stage_number_67" class="text_2" style="top: 10%; left: -55%;"></div>
-              <div id="stage_number_68" class="text_2" style="top: 10%; left:  15%;"></div>
-              <div id="stage_number_69" class="text_2" style="top: 90%; left:  -55%;"></div>
-              <div id="stage_number_70" class="text_2" style="top: 90%; left:  15%;"></div>
-              <div id="stage_number_71" class="text" style="top: 40%; left:  -75%;"></div>
-              <div id="stage_number_72" class="text" style="top: 40%; left:  0%;"></div>
+              <div id="Symbol_7" class="text" style="top: 0%; left: 10%;">+</div>
+              <div id="Symbol_8" class="text" style="top: 80%; left: 10%;">-</div>
+              <div id="stage_number_56" name="bg_color_blue" class="text" style="top: 0%; left: 20%;"></div>
+              <div id="stage_number_57" name="bg_color_blue" class="text" style="top: 0%; left: 90%;"></div>
+              <div id="stage_number_58" name="bg_color_blue" class="text" style="top: 80%; left: 90%;"></div>
+              <div id="stage_number_59" name="bg_color_blue" class="text" style="top: 80%; left: 20%;"></div>
+              <!-- <div id="stage_number_60" class="text" style="top: 40%; left: 40%;"></div>
+              <div id="stage_number_61" class="text" style="top: 40%; left: 100%;"></div> -->
+              <div id="stage_number_62" name="bg_color_green" class="text" style="top: 40%; left: 55%;"></div>
+              <div id="stage_number_63" name="bg_color_red" class="text" style="top: -20%; left: 65%;"></div>
+              <div id="stage_number_64" name="bg_color_red" class="text" style="top: 100%; left: 65%;"></div>
+              <div id="stage_number_65" name="bg_color_red" class="text" style="top: 40%; left: 0%;"></div>
+              <div id="stage_number_66" name="bg_color_red" class="text" style="top: 40%; left: 125%;"></div>
+              <div id="stage_number_67" class="text_2" style="top: 10%; left: 45%;"></div>
+              <div id="stage_number_68" class="text_2" style="top: 10%; left: 115%;"></div>
+              <div id="stage_number_69" class="text_2" style="top: 90%; left: 45%;"></div>
+              <div id="stage_number_70" class="text_2" style="top: 90%; left: 115%;"></div>
+              <div id="stage_number_71" class="text" style="top: 40%; left: 25%;"></div>
+              <div id="stage_number_72" class="text" style="top: 40%; left: 100%;"></div>
             </div>
           </td>   
           <td>
-            <div class="container_1" name="container_1_margin"> <!--中年-->
+            <div class="container_1" name="container_2_margin"> <!--嬰兒年-->
               <img src="pictures/white.png" alt="描述圖片的文字" class="image2">
-              <div id="Symbol_9" class="text" style="top: 0%; left: -90%;">+</div>
-              <div id="Symbol_10" class="text" style="top: 80%; left: -90%;">-</div>
-              <div id="stage_number_73" name="bg_color_blue" class="text" style="top: 0%; left: -80%;"></div>
-              <div id="stage_number_74" name="bg_color_blue" class="text" style="top: 0%; left:  -10%;"></div>
-              <div id="stage_number_75" name="bg_color_blue" class="text" style="top: 80%; left:  -10%;"></div>
-              <div id="stage_number_76" name="bg_color_blue" class="text" style="top: 80%; left:  -80%;"></div>
-              <!-- <div id="stage_number_77" class="text" style="top: 40%; left:  -60%;"></div>
-              <div id="stage_number_78" class="text" style="top: 40%; left:  0%;"></div> -->
-              <div id="stage_number_79" name="bg_color_green" class="text" style="top: 40%; left:  -45%;"></div>
-              <div id="stage_number_80" name="bg_color_red" class="text" style="top: -20%; left:  -35%;"></div>
-              <div id="stage_number_81" name="bg_color_red" class="text" style="top: 100%; left:  -35%;"></div>
-              <div id="stage_number_82" name="bg_color_red" class="text" style="top: 40%; left:  -100%;"></div>
-              <div id="stage_number_83" name="bg_color_red" class="text" style="top: 40%; left:  25%;"></div>
-              <div id="stage_number_84" class="text_2" style="top: 10%; left: -55%;"></div>
-              <div id="stage_number_85" class="text_2" style="top: 10%; left:  15%;"></div>
-              <div id="stage_number_86" class="text_2" style="top: 90%; left:  -55%;"></div>
-              <div id="stage_number_87" class="text_2" style="top: 90%; left:  15%;"></div>
-              <div id="stage_number_88" class="text" style="top: 40%; left:  -75%;"></div>
-              <div id="stage_number_89" class="text" style="top: 40%; left:  0%;"></div>
+              <div id="Symbol_9" class="text" style="top: 0%; left: 10%;">+</div>
+              <div id="Symbol_10" class="text" style="top: 80%; left: 10%;">-</div>
+              <div id="stage_number_73" name="bg_color_blue" class="text" style="top: 0%; left: 20%;"></div>
+              <div id="stage_number_74" name="bg_color_blue" class="text" style="top: 0%; left: 90%;"></div>
+              <div id="stage_number_75" name="bg_color_blue" class="text" style="top: 80%; left: 90%;"></div>
+              <div id="stage_number_76" name="bg_color_blue" class="text" style="top: 80%; left: 20%;"></div>
+              <!-- <div id="stage_number_77" class="text" style="top: 40%; left: 40%;"></div>
+              <div id="stage_number_78" class="text" style="top: 40%; left: 100%;"></div> -->
+              <div id="stage_number_79" name="bg_color_green" class="text" style="top: 40%; left: 55%;"></div>
+              <div id="stage_number_80" name="bg_color_red" class="text" style="top: -20%; left: 65%;"></div>
+              <div id="stage_number_81" name="bg_color_red" class="text" style="top: 100%; left: 65%;"></div>
+              <div id="stage_number_82" name="bg_color_red" class="text" style="top: 40%; left: 0%;"></div>
+              <div id="stage_number_83" name="bg_color_red" class="text" style="top: 40%; left: 125%;"></div>
+              <div id="stage_number_84" class="text_2" style="top: 10%; left: 45%;"></div>
+              <div id="stage_number_85" class="text_2" style="top: 10%; left: 115%;"></div>
+              <div id="stage_number_86" class="text_2" style="top: 90%; left: 45%;"></div>
+              <div id="stage_number_87" class="text_2" style="top: 90%; left: 115%;"></div>
+              <div id="stage_number_88" class="text" style="top: 40%; left: 25%;"></div>
+              <div id="stage_number_89" class="text" style="top: 40%; left: 100%;"></div>
             </div>
-          </td>                                             
+          </td>
         </tr>
       </table>
     </div>
