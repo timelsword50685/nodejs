@@ -27,17 +27,16 @@ function openCity(evt, cityName) {
           // Initialize Datepicker Timepicker
           $(document).ready(function() {
             $('input[name="date"]').datepicker({
-                dateFormat: "yy-mm-dd"
+                dateFormat: "yy-mm-dd",
+                changeMonth: true,      // 允许选择月份
+                changeYear: true,       // 允许选择年份
+                yearRange: "1900:2100"  // 设置年份范围
             });
             $('input[name="time"]').timepicker({
-              timeFormat: "HH:mm", // Format the time as "HH:mm"
-              showHour: true, // Show the hour picker
-              showMinute: true, // Show the minute picker
-              showSecond: false, // Hide the second picker
-              showMillisec: false, // Hide the millisecond picker
-              showMicrosec: false, // Hide the microsecond picker
-              showTimezone: false, // Hide the timezone picker
-              stepMinute: 1 // Set minute steps to 1
+              timeFormat: 'HH:mm',  // 设置时间格式
+              showSecond: false,     // 不显示秒
+              controlType: 'select', // 使用下拉菜单选择
+              oneLine: true          // 将时间选择器放在一行
           }); 
             // 格式化日期和時間函數
           function formatDateTimeInput(value) {
