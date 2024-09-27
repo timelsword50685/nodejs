@@ -22,6 +22,12 @@ function reduceDateTime(symbol_input,date, time,forgetTime_minute, forgetTime) {
 
     // 解析日期和时间
     const [year, month, day] = date.split('-').map(Number);
+    if(forgetTime){
+        time = '00:00'; 
+    }
+    else if (forgetTime_minute){
+        time = `${time.split(':').map(Number)[0]}:00`;
+    }
     const [hour, minute] = time.split(':').map(Number);
 
     // 计算年、月、日的累加和

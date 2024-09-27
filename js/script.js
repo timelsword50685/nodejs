@@ -201,19 +201,42 @@ function openCity(evt, cityName) {
 
         //配對查詢
         $('#queryButton_Destiny').on('click', function() {
-          const dateInput  = $('#date-input03').val();
-          const timeInput  = $('#time-input03').val();
-          const forgetTime_minute  = $('#forgettimebox4').is(':checked');  //只忘記分
-          const forgetTime  = $('#forgettimebox5').is(':checked');  //忘記時分
-          const usernameinput  = $('#username-input02').val();
-          const usergenderinput  = $('#usergender-input02').val();
+          let datecompare  = new Date($('#date-input03').val());  // 取得第一個日期
+          let datecompare02  = new Date($('#date-input04').val());  // 取得第二個日期
+          // 比較日期的值
+          if (datecompare02 < datecompare) {
+            // 如果 dateInput02 比 dateInput 大，則交換它們的值
+            var dateInput02  = $('#date-input03').val();
+            var timeInput02  = $('#time-input03').val();
+            var forgetTime_minute02  = $('#forgettimebox4').is(':checked');  //只忘記分
+            var forgetTime02  = $('#forgettimebox5').is(':checked');  //忘記時分
+            var usernameinput02  = $('#username-input02').val();
+            var usergenderinput02  = $('#usergender-input02').val();
+  
+            var dateInput  = $('#date-input04').val();
+            var timeInput  = $('#time-input04').val();
+            var forgetTime_minute  = $('#forgettimebox6').is(':checked');  //只忘記分
+            var forgetTime  = $('#forgettimebox7').is(':checked');  //忘記時分
+            var usernameinput  = $('#username-input03').val();
+            var usergenderinput  = $('#usergender-input03').val();
+          }
+          else{
+            var dateInput  = $('#date-input03').val();
+            var timeInput  = $('#time-input03').val();
+            var forgetTime_minute  = $('#forgettimebox4').is(':checked');  //只忘記分
+            var forgetTime  = $('#forgettimebox5').is(':checked');  //忘記時分
+            var usernameinput  = $('#username-input02').val();
+            var usergenderinput  = $('#usergender-input02').val();
+  
+            var dateInput02  = $('#date-input04').val();
+            var timeInput02  = $('#time-input04').val();
+            var forgetTime_minute02  = $('#forgettimebox6').is(':checked');  //只忘記分
+            var forgetTime02  = $('#forgettimebox7').is(':checked');  //忘記時分
+            var usernameinput02  = $('#username-input03').val();
+            var usergenderinput02  = $('#usergender-input03').val();
+          }          
 
-          const dateInput02  = $('#date-input04').val();
-          const timeInput02  = $('#time-input04').val();
-          const forgetTime_minute02  = $('#forgettimebox6').is(':checked');  //只忘記分
-          const forgetTime02  = $('#forgettimebox7').is(':checked');  //忘記時分
-          const usernameinput02  = $('#username-input03').val();
-          const usergenderinput02  = $('#usergender-input03').val();
+
 	        var Counselor = $('#userConsultant-input03').val();          
 
           var Symbol = '+';
@@ -585,43 +608,43 @@ function openCity(evt, cityName) {
                       //計算自己跟對方
                       
 
-                      Result_arr_mantissa_add_mine_your = Result_arr_mantissa_mine[0] + Result_arr_mantissa_your[0];  //國曆相加
+                      Result_arr_mantissa_add_mine_your = parseInt(Result_arr_mantissa_mine[0]) + parseInt(Result_arr_mantissa_your[0]);  //國曆相加
                       Array_Number_Result = Result_arr_mantissa_carry(Result_arr_mantissa_add_mine_your);
                       $('#stage_number_8').html(Array_Number_Result);
-                      Result_arr_mantissa_add_mine_your = Result_arr_mantissa_mine[1] + Result_arr_mantissa_your[1];  //國曆相加
+                      Result_arr_mantissa_add_mine_your = parseInt(Result_arr_mantissa_mine[1]) + parseInt(Result_arr_mantissa_your[1]);  //國曆相加
                       Array_Number_Result = Result_arr_mantissa_carry(Result_arr_mantissa_add_mine_your);
                       $('#stage_number_29').html(Array_Number_Result);
-                      Result_arr_mantissa_add_mine_your = Result_arr_mantissa_mine[2] + Result_arr_mantissa_your[2];  //國曆相加
+                      Result_arr_mantissa_add_mine_your = parseInt(Result_arr_mantissa_mine[2]) + parseInt(Result_arr_mantissa_your[2]);  //國曆相加
                       Array_Number_Result = Result_arr_mantissa_carry(Result_arr_mantissa_add_mine_your);
                       $('#stage_number_46').html(Array_Number_Result);
 
-                      Result_arr_mantissa_add_mine_your = Result_arr_mantissa_mine_lunar[0] + Result_arr_mantissa_your_lunar[0];  //農曆相加
+                      Result_arr_mantissa_add_mine_your = parseInt(Result_arr_mantissa_mine_lunar[0]) + parseInt(Result_arr_mantissa_your_lunar[0]);  //農曆相加
                       Array_Number_Result = Result_arr_mantissa_carry(Result_arr_mantissa_add_mine_your);
                       $('#stage_number_9').html(Array_Number_Result);
-                      Result_arr_mantissa_add_mine_your = Result_arr_mantissa_mine_lunar[1] + Result_arr_mantissa_your_lunar[1];  //農曆相加
+                      Result_arr_mantissa_add_mine_your = parseInt(Result_arr_mantissa_mine_lunar[1]) + parseInt(Result_arr_mantissa_your_lunar[1]);  //農曆相加
                       Array_Number_Result = Result_arr_mantissa_carry(Result_arr_mantissa_add_mine_your);
                       $('#stage_number_30').html(Array_Number_Result);
-                      Result_arr_mantissa_add_mine_your = Result_arr_mantissa_mine_lunar[2] + Result_arr_mantissa_your_lunar[2];  //農曆相加
+                      Result_arr_mantissa_add_mine_your = parseInt(Result_arr_mantissa_mine_lunar[2]) + parseInt(Result_arr_mantissa_your_lunar[2]);  //農曆相加
                       Array_Number_Result = Result_arr_mantissa_carry(Result_arr_mantissa_add_mine_your);
                       $('#stage_number_47').html(Array_Number_Result);     
 
-                      Result_arr_mantissa_add_mine_your = Result_arr_mantissa_mine[0] + Result_arr_mantissa_your_lunar[0];  //國農曆相加
+                      Result_arr_mantissa_add_mine_your = parseInt(Result_arr_mantissa_mine[0]) + parseInt(Result_arr_mantissa_your_lunar[0]);  //國農曆相加
                       Array_Number_Result = Result_arr_mantissa_carry(Result_arr_mantissa_add_mine_your);
                       $('#stage_number_10').html(Array_Number_Result);
-                      Result_arr_mantissa_add_mine_your = Result_arr_mantissa_mine[1] + Result_arr_mantissa_your_lunar[1];  //國農曆相加
+                      Result_arr_mantissa_add_mine_your = parseInt(Result_arr_mantissa_mine[1]) + parseInt(Result_arr_mantissa_your_lunar[1]);  //國農曆相加
                       Array_Number_Result = Result_arr_mantissa_carry(Result_arr_mantissa_add_mine_your);
                       $('#stage_number_31').html(Array_Number_Result);
-                      Result_arr_mantissa_add_mine_your = Result_arr_mantissa_mine[2] + Result_arr_mantissa_your_lunar[2];  //國農曆相加
+                      Result_arr_mantissa_add_mine_your = parseInt(Result_arr_mantissa_mine[2]) + parseInt(Result_arr_mantissa_your_lunar[2]);  //國農曆相加
                       Array_Number_Result = Result_arr_mantissa_carry(Result_arr_mantissa_add_mine_your);
                       $('#stage_number_48').html(Array_Number_Result);
 
-                      Result_arr_mantissa_add_mine_your = Result_arr_mantissa_mine_lunar[0] + Result_arr_mantissa_your[0];  //國農曆相加
+                      Result_arr_mantissa_add_mine_your = parseInt(Result_arr_mantissa_mine_lunar[0]) + parseInt(Result_arr_mantissa_your[0]);  //國農曆相加
                       Array_Number_Result = Result_arr_mantissa_carry(Result_arr_mantissa_add_mine_your);
                       $('#stage_number_11').html(Array_Number_Result);   
-                      Result_arr_mantissa_add_mine_your = Result_arr_mantissa_mine_lunar[1] + Result_arr_mantissa_your[1];  //國農曆相加
+                      Result_arr_mantissa_add_mine_your = parseInt(Result_arr_mantissa_mine_lunar[1]) + parseInt(Result_arr_mantissa_your[1]);  //國農曆相加
                       Array_Number_Result = Result_arr_mantissa_carry(Result_arr_mantissa_add_mine_your);
                       $('#stage_number_32').html(Array_Number_Result);   
-                      Result_arr_mantissa_add_mine_your = Result_arr_mantissa_mine_lunar[2] + Result_arr_mantissa_your[2];  //國農曆相加
+                      Result_arr_mantissa_add_mine_your = parseInt(Result_arr_mantissa_mine_lunar[2]) + parseInt(Result_arr_mantissa_your[2]);  //國農曆相加
                       Array_Number_Result = Result_arr_mantissa_carry(Result_arr_mantissa_add_mine_your);
                       $('#stage_number_49').html(Array_Number_Result);      
                       
@@ -652,7 +675,7 @@ function openCity(evt, cityName) {
    
 
                                                
-                      Result_arr_mantissa_add_mine_your = Result_arr_mantissa_mine[3] + Result_arr_mantissa_your[3];  //國曆相加
+                      Result_arr_mantissa_add_mine_your = parseInt(Result_arr_mantissa_mine[3]) + parseInt(Result_arr_mantissa_your[3]);  //國曆相加
                       Array_Number_Result = Result_arr_mantissa_carry(Result_arr_mantissa_add_mine_your);                                    
                       // 檢查並替換 undefined 為空白
                       if (String(Array_Number_Result).includes("undefined")) {
@@ -665,7 +688,7 @@ function openCity(evt, cityName) {
 
 
 
-                      Result_arr_mantissa_add_mine_your = Result_arr_mantissa_mine[4] + Result_arr_mantissa_your[4];  //國曆相加
+                      Result_arr_mantissa_add_mine_your = parseInt(Result_arr_mantissa_mine[4]) + parseInt(Result_arr_mantissa_your[4]);
                       Array_Number_Result = Result_arr_mantissa_carry(Result_arr_mantissa_add_mine_your);                       
                       // 檢查並替換 undefined 為空白
                       if (String(Array_Number_Result).includes("undefined")) {
@@ -674,7 +697,7 @@ function openCity(evt, cityName) {
                         $('#stage_number_80').html(Array_Number_Result);
                       }                      
 
-                      Result_arr_mantissa_add_mine_your = Result_arr_mantissa_mine_lunar[3] + Result_arr_mantissa_your_lunar[3];  //農曆相加
+                      Result_arr_mantissa_add_mine_your = parseInt(Result_arr_mantissa_mine_lunar[3]) + parseInt(Result_arr_mantissa_your_lunar[3]);  //農曆相加
                       Array_Number_Result = Result_arr_mantissa_carry(Result_arr_mantissa_add_mine_your);
                       
                       // 檢查並替換 undefined 為空白
@@ -684,7 +707,7 @@ function openCity(evt, cityName) {
                         $('#stage_number_64').html(Array_Number_Result);
                       } 
 
-                      Result_arr_mantissa_add_mine_your = Result_arr_mantissa_mine_lunar[4] + Result_arr_mantissa_your_lunar[4];  //農曆相加
+                      Result_arr_mantissa_add_mine_your = parseInt(Result_arr_mantissa_mine_lunar[4]) + parseInt(Result_arr_mantissa_your_lunar[4]);  //農曆相加
                       Array_Number_Result = Result_arr_mantissa_carry(Result_arr_mantissa_add_mine_your);                        
                       // 檢查並替換 undefined 為空白
                       if (String(Array_Number_Result).includes("undefined")) {
@@ -693,7 +716,7 @@ function openCity(evt, cityName) {
                         $('#stage_number_81').html(Array_Number_Result); 
                       }                         
 
-                      Result_arr_mantissa_add_mine_your = Result_arr_mantissa_mine[3] + Result_arr_mantissa_your_lunar[3];  //國農曆相加
+                      Result_arr_mantissa_add_mine_your = parseInt(Result_arr_mantissa_mine[3]) + parseInt(Result_arr_mantissa_your_lunar[3]);  //國農曆相加
                       Array_Number_Result = Result_arr_mantissa_carry(Result_arr_mantissa_add_mine_your);
                       
                       // 檢查並替換 undefined 為空白
@@ -703,7 +726,7 @@ function openCity(evt, cityName) {
                         $('#stage_number_65').html(Array_Number_Result); 
                       }                       
 
-                      Result_arr_mantissa_add_mine_your = Result_arr_mantissa_mine[4] + Result_arr_mantissa_your_lunar[4];  //國農曆相加
+                      Result_arr_mantissa_add_mine_your = parseInt(Result_arr_mantissa_mine[4]) + parseInt(Result_arr_mantissa_your_lunar[4]);  //國農曆相加
                       Array_Number_Result = Result_arr_mantissa_carry(Result_arr_mantissa_add_mine_your);
                        
                       // 檢查並替換 undefined 為空白
@@ -713,7 +736,7 @@ function openCity(evt, cityName) {
                         $('#stage_number_82').html(Array_Number_Result); 
                       }                          
                       
-                      Result_arr_mantissa_add_mine_your = Result_arr_mantissa_mine_lunar[3] + Result_arr_mantissa_your[3];  //國農曆相加
+                      Result_arr_mantissa_add_mine_your = parseInt(Result_arr_mantissa_mine_lunar[3]) + parseInt(Result_arr_mantissa_your[3]);  //國農曆相加
                       Array_Number_Result = Result_arr_mantissa_carry(Result_arr_mantissa_add_mine_your);
                       
                       // 檢查並替換 undefined 為空白
@@ -723,7 +746,7 @@ function openCity(evt, cityName) {
                         $('#stage_number_66').html(Array_Number_Result); 
                       }                        
 
-                      Result_arr_mantissa_add_mine_your = Result_arr_mantissa_mine_lunar[4] + Result_arr_mantissa_your[4];  //國農曆相加
+                      Result_arr_mantissa_add_mine_your = parseInt(Result_arr_mantissa_mine_lunar[4]) + parseInt(Result_arr_mantissa_your[4]);  //國農曆相加
                       Array_Number_Result = Result_arr_mantissa_carry(Result_arr_mantissa_add_mine_your);                        
                       
                       // 檢查並替換 undefined 為空白
@@ -823,16 +846,18 @@ function openCity(evt, cityName) {
           // 輔助函數：將數字的十位數與個位數相加
           function sumDigits(num) {
             const digitsSum = num.toString().split('').reduce((acc, char) => acc + parseInt(char), 0);
-            // 如果加總結果大於9，則再相加一次
+            // 如果加總結果大於 9，則再相加一次
             return digitsSum > 9 ? `${digitsSum}/${sumDigits(digitsSum)}` : digitsSum;
           }
         
           // 逐個處理陣列中的每個元素
           return arr.map(num => {
+            // 將 num 格式化為兩位數，例如 5 會被格式化為 "05"
+            const formattedNum = num.toString().padStart(2, '0');
             const summedDigits = sumDigits(num); // 計算數字十位數與個位數的加總
-            return `${num}/${summedDigits}`; // 將原數與結果用斜線區分
+            return `${formattedNum}/${summedDigits}`; // 將格式化後的數與結果用斜線區分
           });
-        }    
+        }   
 
         function finaladdresult(status){
           var myresultarray = [];
@@ -901,12 +926,28 @@ function openCity(evt, cityName) {
         
           return age;
         }
-      function mantissa(formattedResponse){
-        let reduceDateTime = formattedResponse.split("</br>")[1];//21/3 、 23/5 、 30/3 、 35/8 、 35/8
-        let matches = [...reduceDateTime.matchAll(/\/(\d+)\b/g)];
-        let result = matches.map(match => match[1]); // 取得每個匹配中的數字部分
+      // function mantissa(formattedResponse){
+      //   let reduceDateTime = formattedResponse.split("</br>")[1];//21/3 、 23/5 、 30/3 、 35/8 、 35/8
+      //   let matches = [...reduceDateTime.matchAll(/\/(\d+)\b/g)];
+      //   let result = matches.map(match => match[1]); // 取得每個匹配中的數字部分
+      //   return result;
+      // }  
+      function mantissa(formattedResponse) {
+        // 取得 split 出來的字串
+        let reduceDateTime = formattedResponse.split("</br>")[1];
+        
+        // 將每個元素分割出來
+        let elements = reduceDateTime.split(" 、 ");
+        
+        // 針對每個元素，捕捉最後一個 "/" 之後的數字
+        let result = elements.map(element => {
+          let parts = element.split("/"); // 按 "/" 分割
+          return parts[parts.length - 1]; // 取得最後一個部分
+        });
+      
         return result;
-      }  
+      }
+
       function SoulNumber(formattedResponse) {
         const [birthdayParts, reduceDateTime] = formattedResponse.split("</br>");
         const formattedBirthday = birthdayParts.replace(/\+ |- /g, "").replace(/ . /g, "").trim();
@@ -924,13 +965,21 @@ function openCity(evt, cityName) {
       
       function calculateCountMap(formattedBirthday) {
         return [...formattedBirthday].reduce((acc, char) => {
-          acc[char] = (acc[char] || 0) + 1;
+          // 只計算 '1' 到 '9' 的出現次數
+          if (char >= '1' && char <= '9') {
+            acc[char] = (acc[char] || 0) + 1;
+          }
           return acc;
         }, {});
       }
       
       function getLoopResult(reduceDateTime, countMap) {
-        return [...reduceDateTime].filter(char => countMap[char] >= 3 && char !== '0');
+        // return [...countMap].filter(char => countMap[char] >= 3 && char !== '0');
+        // 獲取物件的值作為陣列
+        let values = Object.values(countMap);
+        
+        // 過濾值大於或等於3，並且不是0的項目
+        return values.filter(num => num >= 3 && num !== 0).length;
       }
       
       function calculateResult(item, formattedBirthday, loopResult, isFirstItem) {
@@ -943,23 +992,35 @@ function openCity(evt, cityName) {
         // alert(counts);
         const [firstResult, secondResult, thirdResult] = counts.map(count => count > 0);
       
-        return determineResult(firstResult, secondResult, thirdResult, counts, loopResult);
+        return determineResult(firstResult, secondResult, thirdResult, counts, loopResult ,item);
       }
       
-      function determineResult(firstResult, secondResult, thirdResult, counts, loopResult) {
+      function determineResult(firstResult, secondResult, thirdResult, counts, loopResult ,item) {
         // alert(firstResult);
         // alert(secondResult);
         // alert(thirdResult);
-        if (!firstResult && !secondResult && !thirdResult) return 1;
-        if ((firstResult && !secondResult || !firstResult && secondResult) && !thirdResult) return 2;
-        if (firstResult && secondResult && !thirdResult) return 3;
-        if (!firstResult && !secondResult && thirdResult) return 4;
-        if ((firstResult && !secondResult || !firstResult && secondResult) && thirdResult) return 5;
-        if (firstResult && secondResult && thirdResult) {
-          if (counts.some(count => count >= 3 && count !== 0)) return 6;
-          if (loopResult.length && !loopResult.includes('0')) return 6;
-          return 7;
+        var result_number = 0;
+        if (!firstResult && !secondResult && !thirdResult) result_number = 1;
+        if ((firstResult && !secondResult || !firstResult && secondResult) && !thirdResult) result_number = 2;
+        if (firstResult && secondResult && !thirdResult) result_number = 3;
+        if (!firstResult && !secondResult && thirdResult) result_number = 4;
+        if ((firstResult && !secondResult || !firstResult && secondResult) && thirdResult) result_number = 5;
+        if (item.split("/")[2] && thirdResult){                         //假如有第三層且第三層數字有在生日裡
+          result_number = 5;
         }
+        if (firstResult && secondResult && thirdResult) {
+          // if (counts.some(count => count >= 3 && count !== 0))  result_number = 6;
+          // if (loopResult.length && !loopResult.includes('0'))  result_number = 6;
+          result_number = 7;
+        }
+        if(result_number === 7){
+          if (loopResult !== 0){
+            result_number = 6
+          }else{
+            result_number = 7
+          } 
+        }
+        return result_number;
       }
       function SoulNumberSpan(Result_arr,basicResult){
         $.each(Result_arr, function(index, value) {
@@ -983,6 +1044,17 @@ function openCity(evt, cityName) {
       }
         return NumberIndex;
       } 
+      // function GetFluentYear(birthday) {
+      //   const [year, month, day] = birthday.split("-");
+      //   const currentYear = (new Date().getMonth() + 1 < month || (new Date().getMonth() + 1 == month && new Date().getDate() < day))
+      //     ? new Date().getFullYear() - 1
+      //     : new Date().getFullYear();
+      
+      //   const sumDigits = (str) => [...str].reduce((acc, char) => acc + +char, 0);
+      //   const combinedSum = sumDigits(month + day) + sumDigits(currentYear.toString());
+      
+      //   return `${combinedSum}/${sumDigits(combinedSum.toString())}`;
+      // }
       function GetFluentYear(birthday) {
         const [year, month, day] = birthday.split("-");
         const currentYear = (new Date().getMonth() + 1 < month || (new Date().getMonth() + 1 == month && new Date().getDate() < day))
@@ -990,10 +1062,31 @@ function openCity(evt, cityName) {
           : new Date().getFullYear();
       
         const sumDigits = (str) => [...str].reduce((acc, char) => acc + +char, 0);
-        const combinedSum = sumDigits(month + day) + sumDigits(currentYear.toString());
+        
+        // 計算月份+日期的位數和
+        let combinedSum = sumDigits(month + day) + sumDigits(currentYear.toString());
       
-        return `${combinedSum}/${sumDigits(combinedSum.toString())}`;
+        // 計算 combinedSum 的位數和
+        let denominator = sumDigits(combinedSum.toString());
+      
+        // 確保分母是個位數，如果不是則繼續將十位和個位相加
+        while (denominator >= 10) {
+          denominator = sumDigits(denominator.toString());
+        }
+      
+        // 判斷第二個分母是否為個位數
+        const secondDenominator = sumDigits(combinedSum.toString());
+        if (secondDenominator < 10) {
+          if (combinedSum < 10){
+            combinedSum = combinedSum.toString().padStart(2, '0');
+          }
+          return `${combinedSum}/${secondDenominator}`;
+        } else {
+          return `${combinedSum}/${secondDenominator}/${denominator}`;
+        }
       }
+
+
       const TargetPosition = (lastCharFluentYear, containerid) => {
         let FindDivId = "";
         $("#" + containerid + " .text").each(function() {
