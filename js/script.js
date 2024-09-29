@@ -113,9 +113,14 @@ function openCity(evt, cityName) {
             const usernameinput  = $('#username-input').val();
             const usergenderinput  = $('#usergender-input').val();
             var Symbol = '+';
+            if ((!forgetTime || !forgetTime_minute) && timeInput === ""){
+              throw new Error(alert("請輸入時跟分")); //方法一
+            }
+            
+
             $("#Fleeting_Time_result").toggle(); // 切換div的顯示與隱藏
             if (!dateInput) {
-              alert('請輸入生日');
+              alert('請輸入生日');                    //方法二
               return;
             }
             //計算國曆
@@ -234,7 +239,16 @@ function openCity(evt, cityName) {
             var forgetTime02  = $('#forgettimebox7').is(':checked');  //忘記時分
             var usernameinput02  = $('#username-input03').val();
             var usergenderinput02  = $('#usergender-input03').val();
-          }          
+          } 
+          
+        
+          if ((!forgetTime || !forgetTime_minute) && timeInput === ""){
+            throw new Error(alert("請輸入時跟分"));
+          }
+          
+          if ((!forgetTime02 || !forgetTime_minute02) && timeInput02 === ""){
+            throw new Error(alert("請輸入時跟分"));
+          }
 
 
 	        var Counselor = $('#userConsultant-input03').val();          
@@ -959,9 +973,19 @@ function openCity(evt, cityName) {
         return reduceDateTime.split(" 、 ").map((item, index) => {
           // alert(item);
           // alert(formattedBirthday);
-          return calculateResult(item.trimEnd(), formattedBirthday, loopResult, index === 0);
+        let Symbol_Count = countSymbol(item.trimEnd(),'/');
+        if (Symbol_Count === 1){
+          return calculateResult(item.trimEnd(), formattedBirthday, loopResult);
+        }else{
+          return calculateResultTwo(item.trimEnd(), formattedBirthday, loopResult);
+        }
+          
         });
       }
+      function countSymbol(str, symbol) {
+        const matches = str.match(new RegExp(`\\${symbol}`, 'g')); // 用正規表達式全局匹配符號
+        return matches ? matches.length : 0; // 返回匹配到的次數
+    }
       
       function calculateCountMap(formattedBirthday) {
         return [...formattedBirthday].reduce((acc, char) => {
@@ -982,9 +1006,9 @@ function openCity(evt, cityName) {
         return values.filter(num => num >= 3 && num !== 0).length;
       }
       
-      function calculateResult(item, formattedBirthday, loopResult, isFirstItem) {
-        const [first, second] = isFirstItem ? item.slice(1, 3) : item.slice(0, 2);
-        const third = item.split("/")[2] || item.split("/")[1];
+      function calculateResult(item, formattedBirthday, loopResult) {
+        const [first, second] = item.trim().slice(0, 2);
+        const third = item.split("/")[1];
         // alert(first);
         // alert(second);
         // alert(third);
@@ -994,34 +1018,87 @@ function openCity(evt, cityName) {
       
         return determineResult(firstResult, secondResult, thirdResult, counts, loopResult ,item);
       }
-      
       function determineResult(firstResult, secondResult, thirdResult, counts, loopResult ,item) {
         // alert(firstResult);
         // alert(secondResult);
         // alert(thirdResult);
         var result_number = 0;
         if (!firstResult && !secondResult && !thirdResult) result_number = 1;
-        if ((firstResult && !secondResult || !firstResult && secondResult) && !thirdResult) result_number = 2;
+
+        let isTrue = checkBooleanValues(firstResult, secondResult);
+        if ((isTrue) && !thirdResult) result_number = 2;
         if (firstResult && secondResult && !thirdResult) result_number = 3;
         if (!firstResult && !secondResult && thirdResult) result_number = 4;
-        if ((firstResult && !secondResult || !firstResult && secondResult) && thirdResult) result_number = 5;
-        if (item.split("/")[2] && thirdResult){                         //假如有第三層且第三層數字有在生日裡
-          result_number = 5;
-        }
+        if ((isTrue) && thirdResult) result_number = 5;
         if (firstResult && secondResult && thirdResult) {
-          // if (counts.some(count => count >= 3 && count !== 0))  result_number = 6;
-          // if (loopResult.length && !loopResult.includes('0'))  result_number = 6;
-          result_number = 7;
-        }
-        if(result_number === 7){
           if (loopResult !== 0){
             result_number = 6
-          }else{
+          }else
+          {
             result_number = 7
-          } 
+          }
+        }
+        return result_number;
+      }      
+      function checkBooleanValues(firstResult, secondResult){
+        // 計算 true 的個數
+        const trueCount = [firstResult, secondResult].filter(val => val === true).length;
+        const falseCount = [firstResult, secondResult].filter(val => val === false).length;
+    
+        // 檢查是否有恰好一個 true 和一個 false
+        if (trueCount === 1 && falseCount === 1) {
+            return true;  // 回傳特定值
+        } else {
+            return false; // 不符合條件時回傳其他值
+        }
+      }
+      function calculateResultTwo(item, formattedBirthday, loopResult) {
+        const [first, second, third, fourth] = item.trim().slice(0, 2) + item.trim().slice(3, 5);
+        const fifth = item.split("/")[2];
+        // alert(first);
+        // alert(second);
+        // alert(third);
+        const counts = [first, second, third, fourth, fifth].map(char => (formattedBirthday.split(char).length - 1));
+        // alert(counts);
+        const [firstResult, secondResult, thirdResult, fourthResult, fifthResult] = counts.map(count => count > 0);
+      
+        return determineResultTwo(firstResult, secondResult, thirdResult, fourthResult, fifthResult, counts, loopResult ,item);
+      }      
+      
+      function determineResultTwo(firstResult, secondResult, thirdResult, fourthResult, fifthResult, counts, loopResult ,item) {
+        // alert(firstResult);
+        // alert(secondResult);
+        // alert(thirdResult);
+        var result_number = 0;
+        if (!firstResult && !secondResult && !thirdResult && !fourthResult && !fifthResult) result_number = 1;
+
+        let isTrue = checkBooleanValuesTwo(firstResult, secondResult, thirdResult, fourthResult);
+        if ((isTrue) && !fifthResult) result_number = 2;
+        if (firstResult && secondResult && thirdResult && fourthResult && !fifthResult) result_number = 3;
+        if (!firstResult && !secondResult && !thirdResult  && !fourthResult && fifthResult) result_number = 4;
+        if ((isTrue) && fifthResult) result_number = 5;
+        if (firstResult && secondResult && thirdResult  && fourthResult && fifthResult) {
+          if (loopResult !== 0){
+            result_number = 6
+          }else
+          {
+            result_number = 7
+          }
         }
         return result_number;
       }
+      function checkBooleanValuesTwo(firstResult, secondResult, thirdResult, fourthResult) {
+        // 計算 true 的個數
+        const trueCount = [firstResult, secondResult, thirdResult, fourthResult].filter(val => val === true).length;
+        const falseCount = [firstResult, secondResult, thirdResult, fourthResult].filter(val => val === false).length;
+    
+        // 檢查是否有恰好一個 true 和一個 false
+        if (trueCount >= 1 && falseCount >= 1) {
+            return true;  // 回傳特定值
+        } else {
+            return false; // 不符合條件時回傳其他值
+        }
+    }      
       function SoulNumberSpan(Result_arr,basicResult){
         $.each(Result_arr, function(index, value) {
           // 创建一个新的 span 元素，并设置内容

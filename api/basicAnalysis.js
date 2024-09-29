@@ -20,6 +20,11 @@ function reduceDateTime(symbol_input,date, time,forgetTime_minute, forgetTime) {
         return results.join('/');
     }
 
+    function countSymbol(str, symbol) {
+        const matches = str.match(new RegExp(`\\${symbol}`, 'g')); // 用正規表達式全局匹配符號
+        return matches ? matches.length : 0; // 返回匹配到的次數
+    }
+
     // 解析日期和时间
     const [year, month, day] = date.split('-').map(Number);
     if(forgetTime){
@@ -45,7 +50,8 @@ function reduceDateTime(symbol_input,date, time,forgetTime_minute, forgetTime) {
     let dayResult = reduceAndLog(monthSum, day);    // 30/3
     let hourResult = forgetTime ? 0 : reduceAndLog(daySum, hour);    // 34/7
     let minuteResult = forgetTime_minute ? 0 : reduceAndLog(hourSum, minute); // 39/12/3
-    let dayResult_Symbol_Number = dayResult.split("/")[1];  //3
+    let Symbol_Count = countSymbol(dayResult,'/');
+    let dayResult_Symbol_Number = dayResult.split("/")[Symbol_Count];  //3
     // let targetChar = "/";
     // // 插入固定内容
     // yearResult = yearResult.replace(targetChar, `<span>${targetChar}</span>`);
