@@ -113,7 +113,7 @@ function openCity(evt, cityName) {
             const usernameinput  = $('#username-input').val();
             const usergenderinput  = $('#usergender-input').val();
             var Symbol = '+';
-            if ((!forgetTime || !forgetTime_minute) && timeInput === ""){
+            if ((!forgetTime && !forgetTime_minute) && timeInput === ""){
               throw new Error(alert("請輸入時跟分")); //方法一
             }
             
@@ -155,7 +155,7 @@ function openCity(evt, cityName) {
                     //alert(lastCharFluentYear);
                     //alert(TargetPosition(lastCharFluentYear));
                     var containerid = "container_1_1";
-                    $('#'+TargetPosition(lastCharFluentYear,containerid)).html(FluentYear);
+                    $('#'+TargetPosition(lastCharFluentYear,containerid)).html(`+${FluentYear}`);
                     
                     //計算農曆
                     Symbol = '-';
@@ -186,7 +186,7 @@ function openCity(evt, cityName) {
                         var FluentYear = GetFluentYear(lunarBirthday);                //取得流年數 
                         var lastCharFluentYear = FluentYear.charAt(FluentYear.length - 1);
                         containerid = "container_1_2";
-                        $('#'+TargetPosition_2(lastCharFluentYear,containerid)).html(FluentYear);                                              
+                        $('#'+TargetPosition_2(lastCharFluentYear,containerid)).html(`-${FluentYear}`);                                              
                       },
                       error: function(error) {
                           console.error('Error:', error);
@@ -242,11 +242,11 @@ function openCity(evt, cityName) {
           } 
           
         
-          if ((!forgetTime || !forgetTime_minute) && timeInput === ""){
+          if ((!forgetTime && !forgetTime_minute) && timeInput === ""){
             throw new Error(alert("請輸入時跟分"));
           }
           
-          if ((!forgetTime02 || !forgetTime_minute02) && timeInput02 === ""){
+          if ((!forgetTime02 && !forgetTime_minute02) && timeInput02 === ""){
             throw new Error(alert("請輸入時跟分"));
           }
 
@@ -354,7 +354,7 @@ function openCity(evt, cityName) {
                   //alert(lastCharFluentYear);
                   //alert('#'+TargetPosition(lastCharFluentYear,containerid));
                   //alert(FluentYear);
-                  $('#'+TargetPosition(lastCharFluentYear,containerid)).html(FluentYear);
+                  $('#'+TargetPosition(lastCharFluentYear,containerid)).html(`+${FluentYear}`);
                   // alert("forgetTime_minute,"+forgetTime_minute);
                   // alert("forgetTime,"+forgetTime);
                   //計算自己農曆
@@ -438,7 +438,7 @@ function openCity(evt, cityName) {
                       var FluentYear = GetFluentYear(lunarBirthday);                //取得流年數 
                       var lastCharFluentYear = FluentYear.charAt(FluentYear.length - 1);
                       containerid = "container_10_2";
-                      $('#'+TargetPosition_2(lastCharFluentYear,containerid)).html(FluentYear);                                              
+                      $('#'+TargetPosition_2(lastCharFluentYear,containerid)).html(`-${FluentYear}`);                                              
                     },
                     error: function(error) {
                         console.error('Error:', error);
@@ -526,7 +526,7 @@ function openCity(evt, cityName) {
                   var FluentYear = GetFluentYear(dateInput02);                //取得流年數
                   var lastCharFluentYear = FluentYear.charAt(FluentYear.length - 1);
                   var containerid = "container_20_1";
-                  $('#'+TargetPosition(lastCharFluentYear,containerid)).html(FluentYear);
+                  $('#'+TargetPosition(lastCharFluentYear,containerid)).html(`+${FluentYear}`);
                   
                   //計算對方農曆
                   Symbol = '-';
@@ -789,7 +789,7 @@ function openCity(evt, cityName) {
                       var FluentYear = GetFluentYear(lunarBirthday);                //取得流年數 
                       var lastCharFluentYear = FluentYear.charAt(FluentYear.length - 1);
                       containerid = "container_20_2";
-                      $('#'+TargetPosition_2(lastCharFluentYear,containerid)).html(FluentYear);                                              
+                      $('#'+TargetPosition_2(lastCharFluentYear,containerid)).html(`-${FluentYear}`);                                              
                     },
                     error: function(error) {
                         console.error('Error:', error);
