@@ -59,8 +59,8 @@
     justify-content: center;
     align-items: center;
     /* background-color: lightblue; */
-    border-bottom: 2px solid rgb(81, 79, 68); /* 在右側添加一條線 */
-    padding: 20px;
+    border-bottom: 2px solid rgb(81, 79, 68); /* 在下側添加一條線 */
+    padding: 30px;
 }
   
   /* Change background color of buttons on hover */
