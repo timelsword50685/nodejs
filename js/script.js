@@ -26,6 +26,9 @@ function openCity(evt, cityName) {
 
           // Initialize Datepicker Timepicker
           $(document).ready(function() {
+            var isLeapMonthValue = '';
+            var isLeapMonth      = false;    
+            var isLeapValue      = '';   
             $('input[name="date"]').datepicker({
                 dateFormat: "yy-mm-dd",
                 changeMonth: true,      // 允许选择月份
@@ -68,40 +71,47 @@ function openCity(evt, cityName) {
         });
         // 函数：将公历生日转换为农历生日
         function convertToLunar(solarDate) {
-          if (typeof Lunar === 'undefined') {
-              console.error('Lunar library is not loaded.');
+          // 檢查 Lunar 和 Solar 是否正確載入
+          if (!Lunar || !Solar) {
+              console.error('Lunar or Solar is undefined.');
               return null;
           }
+  
+          // 解析公曆日期
           const [year, month, day] = solarDate.split('-').map(Number);
-          // const solar = new Lunar.Solar(year, month, day);
-          // const lunar = Lunar.Solar.fromSolar(solar);
-
-          let solar = Solar.fromYmd(year,month,day);
-
-          const lunar = solar.getLunar();
+          if (isNaN(year) || isNaN(month) || isNaN(day)) {
+              console.error('Invalid solar date format. Expected YYYY-MM-DD.');
+              return null;
+          }
   
-          const lunarYear = lunar.getYear();
-          const lunarMonth = String(lunar.getMonth()).padStart(2, '0');
-          const lunarDay = String(lunar.getDay()).padStart(2, '0');
+          try {
+            isLeapMonthValue = '';
+            isLeapMonth      = false;    
+            isLeapValue      = '';  
+              // 創建 Solar 對象
+              const solar = Solar.fromYmd(year, month, day);
+              // 轉換為 Lunar 對象
+              const lunar = solar.getLunar();
+              
+              // 獲取農曆年份、月份、日期
+              const lunarYear = lunar.getYear();
+              const lunarMonth = LunarMonth.fromYm(lunar.getYear(), lunar.getMonth());
+              //const lunarMonth = lunar.getMonth(); // 1-12，可能有閏月
+              const lunarDay = lunar.getDay();
   
-          return `${lunarYear}-${lunarMonth}-${lunarDay}`;
-
-          // // 解析公历日期
-          // const [year, month, day] = solarDate.split('-').map(Number);
-
-          // // 创建 Solar 对象
-          // const solar = new Lunar.getSolar(year, month, day);
-
-          // // 转换为农历
-          // const lunar = Lunar.Lunar.fromSolar(solar);
-
-          // // 获取农历年月日
-          // const lunarYear = lunar.getYear();
-          // const lunarMonth = String(lunar.getMonth()).padStart(2, '0');
-          // const lunarDay = String(lunar.getDay()).padStart(2, '0');
-
-          // // 返回格式化后的农历日期
-          // return `${lunarYear}-${lunarMonth}-${lunarDay}`;
+              // 判斷是否為閏月
+              isLeapMonth = lunarMonth.isLeap();
+              const lunarMonthStr = String(lunar.getMonth()).padStart(2, '0').replace(/-/g, '0');
+              const lunarDayStr = String(lunarDay).padStart(2, '0');
+              if (isLeapMonth){
+                isLeapMonthValue = `閏${String(lunar.getMonth()).charAt(String(lunar.getMonth()).length - 1)}`;
+              }
+              isLeapValue = `${lunarYear}-${isLeapMonthValue}-${lunarDayStr}`;
+              return `${lunarYear}-${lunarMonthStr}-${lunarDayStr}`;
+          } catch (error) {
+              console.error('Error converting to lunar date:', error);
+              return null;
+          }
       }
           //階段數&流年查詢
           $('#queryButton_Fleeting_Time').on('click', function() {
@@ -159,7 +169,7 @@ function openCity(evt, cityName) {
                     
                     //計算農曆
                     Symbol = '-';
-                    const lunarBirthday = convertToLunar(dateInput);
+                    const lunarBirthday = convertToLunar(dateInput);                    
                     $.ajax({
                       url: '/api/basicAnalysis.js',
                       method: 'POST',
@@ -172,7 +182,12 @@ function openCity(evt, cityName) {
                         formattedResponse2 = formattedResponse2.replace(/\n/g, "</br>");
                         formattedResponse2 = formattedResponse2.replace(/\*/g, "");
                         //$('#basicResult2_title').html('老年數   中年數   青年數   青少年數   幼年數');
-                        $('#basicResult_Lunar').html(formattedResponse2); 
+                        if (isLeapMonth){
+                          $('#basicResult_Lunar').html(`${isLeapValue}</br> ${formattedResponse2.split("</br>")[1]}`);
+                        }else{
+                          $('#basicResult_Lunar').html(formattedResponse2);
+                        }
+                         
                         let Result_arr02 = [];
                         basicResult = "#basicResult_SoulNumber_Lunar";
                         Result_arr02  = SoulNumber(formattedResponse2,basicResult);
@@ -404,7 +419,11 @@ function openCity(evt, cityName) {
                       
                       //$('#basicResult2_title').html('老年數   中年數   青年數   青少年數   幼年數');
                       formattedResponse2 = formattedResponse2.replace(/\*/g, "");
-                      $('#basicResult_Lunar_Destiny').html(formattedResponse2); 
+                      if (isLeapMonth){
+                        $('#basicResult_Lunar_Destiny').html(`${isLeapValue}</br> ${formattedResponse2.split("</br>")[1]}`);
+                      }else{
+                        $('#basicResult_Lunar_Destiny').html(formattedResponse2);
+                      }                      
                       let Result_arr02 = [];
                                           
                       basicResult = "#basicResult_SoulNumber_Lunar_Destiny";
@@ -565,7 +584,11 @@ function openCity(evt, cityName) {
                          
                                                                
                       formattedResponse2 = formattedResponse2.replace(/\*/g, "");
-                      $('#basicResult_Lunar_Destiny_yours').html(formattedResponse2); 
+                      if (isLeapMonth){
+                        $('#basicResult_Lunar_Destiny_yours').html(`${isLeapValue}</br> ${formattedResponse2.split("</br>")[1]}`);
+                      }else{
+                        $('#basicResult_Lunar_Destiny_yours').html(formattedResponse2);
+                      }                      
                       let Result_arr02 = [];                   
                       basicResult = "#basicResult_SoulNumber_Lunar_Destiny_yours";
                       Result_arr02  = SoulNumber(formattedResponse2,basicResult);

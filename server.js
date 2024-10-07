@@ -23,8 +23,6 @@ app.use('/js', express.static(path.join(__dirname, 'js')));
 app.use('/pictures', express.static(path.join(__dirname, 'pictures')));
 
 
-
-
 // 引入 API 模块
 const generatePersonalityAnalysis = require('./api/basicAnalysis.js');
 const fiveStages = require('./api/fiveStages.js');
