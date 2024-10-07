@@ -52,6 +52,15 @@ function reduceDateTime(symbol_input,date, time,forgetTime_minute, forgetTime) {
     let minuteResult = forgetTime_minute ? 0 : reduceAndLog(hourSum, minute); // 39/12/3
     let Symbol_Count = countSymbol(dayResult,'/');
     let dayResult_Symbol_Number = dayResult.split("/")[Symbol_Count];  //3
+    if (yearResult.length === 1){
+        yearResult = `${yearResult.padStart(2, '0')}/${yearResult}`
+    }
+    if (monthResult.length === 1){
+        monthResult = `${monthResult.padStart(2, '0')}/${monthResult}`
+    } 
+    if (dayResult.length === 1){
+        dayResult = `${dayResult.padStart(2, '0')}/${dayResult}`
+    }        
     // let targetChar = "/";
     // // 插入固定内容
     // yearResult = yearResult.replace(targetChar, `<span>${targetChar}</span>`);

@@ -121,7 +121,7 @@ function openCity(evt, cityName) {
             const forgetTime_minute  = $('#forgettimebox2').is(':checked');  //只忘記分
             const forgetTime  = $('#forgettimebox3').is(':checked');  //忘記時分
             const usernameinput  = $('#username-input').val();
-            const usergenderinput  = $('#usergender-input').val();
+            // const usergenderinput  = $('#usergender-input').val();
             var Symbol = '+';
             if ((!forgetTime && !forgetTime_minute) && timeInput === ""){
               throw new Error(alert("請輸入時跟分")); //方法一
@@ -215,7 +215,7 @@ function openCity(evt, cityName) {
                 }
             });
             const age = calculateAge(dateInput);
-            $('#username_gender').html(`${usernameinput}  ${age}歲  ${usergenderinput}`);
+            $('#username_gender').html(`${usernameinput}  ${age}歲`);
             $('#Fleeting_Time_query').addClass('hidden');            
         });
 
@@ -231,14 +231,14 @@ function openCity(evt, cityName) {
             var forgetTime_minute02  = $('#forgettimebox4').is(':checked');  //只忘記分
             var forgetTime02  = $('#forgettimebox5').is(':checked');  //忘記時分
             var usernameinput02  = $('#username-input02').val();
-            var usergenderinput02  = $('#usergender-input02').val();
+            // var usergenderinput02  = $('#usergender-input02').val();
   
             var dateInput  = $('#date-input04').val();
             var timeInput  = $('#time-input04').val();
             var forgetTime_minute  = $('#forgettimebox6').is(':checked');  //只忘記分
             var forgetTime  = $('#forgettimebox7').is(':checked');  //忘記時分
             var usernameinput  = $('#username-input03').val();
-            var usergenderinput  = $('#usergender-input03').val();
+            // var usergenderinput  = $('#usergender-input03').val();
           }
           else{
             var dateInput  = $('#date-input03').val();
@@ -246,14 +246,14 @@ function openCity(evt, cityName) {
             var forgetTime_minute  = $('#forgettimebox4').is(':checked');  //只忘記分
             var forgetTime  = $('#forgettimebox5').is(':checked');  //忘記時分
             var usernameinput  = $('#username-input02').val();
-            var usergenderinput  = $('#usergender-input02').val();
+            // var usergenderinput  = $('#usergender-input02').val();
   
             var dateInput02  = $('#date-input04').val();
             var timeInput02  = $('#time-input04').val();
             var forgetTime_minute02  = $('#forgettimebox6').is(':checked');  //只忘記分
             var forgetTime02  = $('#forgettimebox7').is(':checked');  //忘記時分
             var usernameinput02  = $('#username-input03').val();
-            var usergenderinput02  = $('#usergender-input03').val();
+            // var usergenderinput02  = $('#usergender-input03').val();
           } 
           
         
@@ -471,7 +471,7 @@ function openCity(evt, cityName) {
               }
           });
           var age = calculateAge(dateInput);
-          $('#username_gender_Destiny').html(`${usernameinput}  ${age}歲  ${usergenderinput}`);
+          $('#username_gender_Destiny').html(`${usernameinput}  ${age}歲`);
           $('#Destiny_Query').addClass('hidden');  
           
 
@@ -826,7 +826,7 @@ function openCity(evt, cityName) {
               }
           });
           age = calculateAge(dateInput02);
-          $('#username_gender_Destiny_yours').html(`${usernameinput02}  ${age}歲  ${usergenderinput02}`);
+          $('#username_gender_Destiny_yours').html(`${usernameinput02}  ${age}歲`);
           $('#Destiny_Query').addClass('hidden'); 
           // 调用执行函数
           
