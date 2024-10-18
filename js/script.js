@@ -92,7 +92,7 @@ function openCity(evt, cityName) {
               const solar = Solar.fromYmd(year, month, day);
               // 轉換為 Lunar 對象
               const lunar = solar.getLunar();
-              
+               
               // 獲取農曆年份、月份、日期
               const lunarYear = lunar.getYear();
               const lunarMonth = LunarMonth.fromYm(lunar.getYear(), lunar.getMonth());
