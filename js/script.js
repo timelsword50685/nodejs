@@ -105,7 +105,7 @@ function openCity(evt, cityName) {
               const lunarDayStr = String(lunarDay).padStart(2, '0');
               if (isLeapMonth){
                 isLeapMonthValue = `閏${String(lunar.getMonth()).charAt(String(lunar.getMonth()).length - 1)}`;
-              }
+              }        
               isLeapValue = `${lunarYear}-${isLeapMonthValue}-${lunarDayStr}`;
               return `${lunarYear}-${lunarMonthStr}-${lunarDayStr}`;
           } catch (error) {
@@ -140,6 +140,7 @@ function openCity(evt, cityName) {
                 contentType: 'application/json',
                 data: JSON.stringify({symbol_input:Symbol, date: dateInput, time: timeInput,forgetTime_minute : forgetTime_minute, forgetTime: forgetTime }),
                 success: function(response) {
+                  let time_zone = '';
                   let formattedResponse = response.result;
                   let SymbolNumber = Number(formattedResponse.split("&&")[1]);
                   formattedResponse = formattedResponse.split("&&")[0];
@@ -183,7 +184,15 @@ function openCity(evt, cityName) {
                         formattedResponse2 = formattedResponse2.replace(/\*/g, "");
                         //$('#basicResult2_title').html('老年數   中年數   青年數   青少年數   幼年數');
                         if (isLeapMonth){
-                          $('#basicResult_Lunar').html(`${isLeapValue}</br> ${formattedResponse2.split("</br>")[1]}`);
+                          if(forgetTime){
+                            time_zone = ''; 
+                          }
+                          else if (forgetTime_minute){
+                            time_zone = ` . ${timeInput.split(':').map(Number)[0]}:00`;
+                          }else{
+                            time_zone = ` . ${timeInput}`;
+                          } 
+                          $('#basicResult_Lunar').html(`${isLeapValue}${time_zone} </br> ${formattedResponse2.split("</br>")[1]}`);
                         }else{
                           $('#basicResult_Lunar').html(formattedResponse2);
                         }
@@ -386,6 +395,7 @@ function openCity(evt, cityName) {
                     data: JSON.stringify({symbol_input:Symbol, date: lunarBirthday, time: timeInput,forgetTime_minute:forgetTime_minute, forgetTime: forgetTime }),
                     success: function(response) {
                       // alert(response.result);
+                      let time_zone = '';
                       let formattedResponse2 = response.result;
                       let SymbolNumber = Number(formattedResponse2.split("&&")[1]);
                       formattedResponse2 = formattedResponse2.split("&&")[0];
@@ -420,7 +430,16 @@ function openCity(evt, cityName) {
                       //$('#basicResult2_title').html('老年數   中年數   青年數   青少年數   幼年數');
                       formattedResponse2 = formattedResponse2.replace(/\*/g, "");
                       if (isLeapMonth){
-                        $('#basicResult_Lunar_Destiny').html(`${isLeapValue}</br> ${formattedResponse2.split("</br>")[1]}`);
+
+                        if(forgetTime){
+                          time_zone = ''; 
+                        }
+                        else if (forgetTime_minute){
+                          time_zone = ` . ${timeInput.split(':').map(Number)[0]}:00`;
+                        }else{
+                          time_zone = ` . ${timeInput}`;
+                        }                          
+                        $('#basicResult_Lunar_Destiny').html(`${isLeapValue}${time_zone}</br> ${formattedResponse2.split("</br>")[1]}`);
                       }else{
                         $('#basicResult_Lunar_Destiny').html(formattedResponse2);
                       }                      
@@ -557,6 +576,7 @@ function openCity(evt, cityName) {
                     contentType: 'application/json',
                     data: JSON.stringify({symbol_input:Symbol, date: lunarBirthday, time: timeInput02,forgetTime_minute:forgetTime_minute02, forgetTime: forgetTime02 }),
                     success: function(response) {
+                      let time_zone = '';
                       let formattedResponse2 = response.result;
                       let SymbolNumber = Number(formattedResponse2.split("&&")[1]);
                       formattedResponse2 = formattedResponse2.split("&&")[0];
@@ -585,7 +605,16 @@ function openCity(evt, cityName) {
                                                                
                       formattedResponse2 = formattedResponse2.replace(/\*/g, "");
                       if (isLeapMonth){
-                        $('#basicResult_Lunar_Destiny_yours').html(`${isLeapValue}</br> ${formattedResponse2.split("</br>")[1]}`);
+
+                        if(forgetTime02){
+                          time_zone = ''; 
+                        }
+                        else if (forgetTime_minute02){
+                          time_zone = ` . ${timeInput02.split(':').map(Number)[0]}:00`;
+                        }else{
+                          time_zone = ` . ${timeInput02}`;
+                        }                          
+                        $('#basicResult_Lunar_Destiny_yours').html(`${isLeapValue}${time_zone}</br> ${formattedResponse2.split("</br>")[1]}`);
                       }else{
                         $('#basicResult_Lunar_Destiny_yours').html(formattedResponse2);
                       }                      
